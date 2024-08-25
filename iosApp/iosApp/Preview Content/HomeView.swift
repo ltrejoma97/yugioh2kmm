@@ -24,22 +24,22 @@ struct HomeView: View {
                 }.tag(0)
             
 //            
-//            MapView()
-//                .font(.system(size: 30, weight: .bold, design: .rounded))
-//                .tabItem {
-//                    Image(systemName: "map")
-//                    Text("Map")
-//                    
-//                }.tag(1)
+            MapView()
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+                .tabItem {
+                    Image(systemName: "map")
+                    Text("Map")
+                    
+                }.tag(1)
 //            
 //            
-//            WorldView()
-//                .font(.system(size: 30, weight: .bold, design: .rounded))
-//                .tabItem {
-//                    Image(systemName: "network")
-//                    Text("Hello world")
-//                    
-//                }.tag(2)
+            WorldView()
+                .font(.system(size: 30, weight: .bold, design: .rounded))
+                .tabItem {
+                    Image(systemName: "network")
+                    Text("Hello world")
+                    
+                }.tag(2)
         }
     }
 }

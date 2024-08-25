@@ -7,13 +7,29 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MapView: View {
+    
+    let pin1 = CLLocationCoordinate2D(latitude: 9.142891, longitude: -66.38551)
+    
+    let pin2 = CLLocationCoordinate2D(latitude: 9.152891, longitude: -66.38551)
+    let pin3 = CLLocationCoordinate2D(latitude: 9.162891, longitude: -66.38551)
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+//            Map(){
+//                Marker("pin1", coordinate: pin1)
+//                
+//                Marker("pin2", coordinate: pin2)
+//                
+//                Marker("pin3", coordinate: pin3)
+//            }
+        }.frame(height: 350)
     }
 }
 
 #Preview {
-    MapView()
+ MapView()
+   
 }

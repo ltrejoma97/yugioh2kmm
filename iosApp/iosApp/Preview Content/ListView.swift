@@ -25,10 +25,10 @@ struct ListView: View {
                 
                 
                 Button(action: {
-//                    viewModel.isImageActive = true
-//                    viewModel.name = "Amo de las mentes"
-//                    viewModel.atk = "100"
-//                    viewModel.def = "200"
+                    viewModel.isImageActive = true
+                    viewModel.name = "Amo de las mentes"
+                    viewModel.atk = "100"
+                    viewModel.def = "200"
                 }, label: {
                     
                     VStack(spacing: 0) {
@@ -37,7 +37,7 @@ struct ListView: View {
                             .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                             .background(Color("Blue-gray"))
                         
-                        Image("Amo de las mentes")
+                        Image("Amo_de_las_mentes")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 240, height: 400)
@@ -60,7 +60,7 @@ struct ListView: View {
                             .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                             .background(Color("Blue-gray"))
                         
-                        Image("Cadena esoterica")
+                        Image("Cadena_esoterica")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 240, height: 400)
@@ -82,7 +82,7 @@ struct ListView: View {
                             .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                             .background(Color("Blue-gray"))
                         
-                        Image("Chaos king")
+                        Image("Chaos_king")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 240, height: 400)
@@ -103,7 +103,7 @@ struct ListView: View {
                             .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                             .background(Color("Blue-gray"))
                         
-                        Image("Kunai con cadena")
+                        Image("Kunai_con_cadena")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 240, height: 400)
@@ -124,7 +124,7 @@ struct ListView: View {
                             .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                             .background(Color("Blue-gray"))
                         
-                        Image("Mago oscuro")
+                        Image("Mago_oscuro")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 240, height: 400)
@@ -145,7 +145,7 @@ struct ListView: View {
                             .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                             .background(Color("Blue-gray"))
                         
-                        Image("Payaso del sueno")
+                        Image("Payaso_de_ sueno")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 240, height: 400)
