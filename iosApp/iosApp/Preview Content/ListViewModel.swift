@@ -8,12 +8,11 @@
 
 import SwiftUI
 
-struct ListViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
-
-#Preview {
-    ListViewModel()
+class ListViewModel: ObservableObject{
+    
+    @State var isImageActive = false
+    @State var name = ""
+    @State var atk = ""
+    @State var def = ""
+    
 }
