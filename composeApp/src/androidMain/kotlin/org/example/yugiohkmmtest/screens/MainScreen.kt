@@ -18,40 +18,50 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import moe.tlaster.precompose.PreComposeApp
+import org.example.yugiohkmmtest.viewModel.CardsUiState
 
 
 @Composable
-fun MainScreen() {
-    val navItemList = listOf(
-        NavItem(label = "List", icon = Icons.Default.List),
-        NavItem(label = "Map", icon = Icons.Default.LocationOn),
-        NavItem(label = "Hello", icon = Icons.Default.Person)
-    )
+fun MainScreen(uiState: CardsUiState) {
+    PreComposeApp {
+        val navItemList = listOf(
+            NavItem(label = "List", icon = Icons.Default.List),
+            NavItem(label = "Map", icon = Icons.Default.LocationOn),
+            NavItem(label = "Hello", icon = Icons.Default.Person)
+        )
 
-    var selectedIndex by remember { mutableStateOf(0) }
-    Scaffold(
-        modifier = Modifier.fillMaxSize(),
-        bottomBar = {
-            NavigationBar {
-                navItemList.forEachIndexed { index,navItem ->
-                    NavigationBarItem(
-                        selected = selectedIndex == index,
-                        onClick = { selectedIndex = index },
-                        icon = { Icon(imageVector = navItem.icon, contentDescription = "icon") },
-                        label = { Text(text = navItem.label) }
-                    )
+        var selectedIndex by remember { mutableStateOf(0) }
+        Scaffold(
+            modifier = Modifier.fillMaxSize(),
+            bottomBar = {
+                NavigationBar {
+                    navItemList.forEachIndexed { index, navItem ->
+                        NavigationBarItem(
+                            selected = selectedIndex == index,
+                            onClick = { selectedIndex = index },
+                            icon = {
+                                Icon(
+                                    imageVector = navItem.icon,
+                                    contentDescription = "icon"
+                                )
+                            },
+                            label = { Text(text = navItem.label) }
+                        )
+                    }
                 }
-            }
 
-        }) {innerPadding ->
-        ContentScreen(modifier = Modifier.padding(innerPadding), selectedIndex)
+            }) { innerPadding ->
+            ContentScreen(modifier = Modifier.padding(innerPadding), selectedIndex, uiState)
+        }
     }
 }
 
+
 @Composable
-fun ContentScreen(modifier: Modifier, selectedIndex: Int) {
+fun ContentScreen(modifier: Modifier, selectedIndex: Int, uiState: CardsUiState) {
     when (selectedIndex) {
-        0 -> ListScreen()
+        0 -> ListScreen(uiState)
         1 -> ShowingMap()
         2 -> Hello()
     }

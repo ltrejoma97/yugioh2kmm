@@ -28,7 +28,8 @@ kotlin {
         }
         commonMain.dependencies {
             implementation(compose.runtime)
-            implementation(compose.foundation)
+            api(compose.foundation)
+            api(compose.animation)
             implementation(compose.material)
             implementation(compose.material3)
             implementation(compose.ui)
@@ -37,6 +38,12 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(projects.shared)
+
+            //Navigation PreCompose
+            api("moe.tlaster:precompose:1.5.10")
+            //ViewModel
+            api("moe.tlaster:precompose-viewmodel:1.5.10")
+
 
         }
     }
