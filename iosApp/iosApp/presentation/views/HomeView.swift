@@ -10,17 +10,21 @@ import SwiftUI
 
 
 struct HomeView: View {
+
+    
     @State var tabSeleccionado = 1
     var body: some View {
         TabView(selection: $tabSeleccionado){
+        
             
             
             ListView()
                 .font(.system(size: 30, weight: .bold, design: .rounded))
                 .tabItem {
                     Image(systemName: "list.bullet")
-                    Text("Card List")
                     
+                    Text("Card List")
+     
                 }.tag(0)
             
 //            

@@ -6,14 +6,22 @@
 //  Copyright © 2024 orgName. All rights reserved.
 //
 
-import SwiftUI
+import Foundation
 
-struct PokemonInfo: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
+struct PokemonInfo: Codable {
+    var data: [Pokemons]
 }
 
-#Preview {
-    PokemonInfo()
+struct Pokemons: Codable{
+    var id: Int
+    var name: String
+    var type: String
+    var frameType: String
+    var desc: String
+    var race: String
+}
+
+struct CardImages: Codable{
+    var id: Int
+    var image_url: String
 }

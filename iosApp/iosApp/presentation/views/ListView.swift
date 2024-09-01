@@ -9,13 +9,16 @@
 import SwiftUI
 
 struct ListView: View {
-    private var viewModel: ListViewModel = ListViewModel()
+    
+    @ObservedObject var viewModel = ListViewModel()
 
     var body: some View {
      
         VStack {
             
             ScrollView{
+                Text("Primer pokemon \(viewModel.pokemonInfo[0].type)")
+                
                 Text("CARD LIST")
                     .font(.title3)
                     .foregroundColor(.black)

@@ -10,6 +10,7 @@
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
+		606BD5022C7CF366005AF5B4 /* PokemonInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 606BD5012C7CF366005AF5B4 /* PokemonInfo.swift */; };
 		60B8A1FF2C7AB83C008AC195 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8A1FE2C7AB83C008AC195 /* ListView.swift */; };
 		60B8A2012C7AB934008AC195 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8A2002C7AB934008AC195 /* ListViewModel.swift */; };
 		60B8A2032C7ABBD2008AC195 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8A2022C7ABBD2008AC195 /* HomeView.swift */; };
@@ -22,6 +23,7 @@
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
+		606BD5012C7CF366005AF5B4 /* PokemonInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfo.swift; sourceTree = "<group>"; };
 		60B8A1FE2C7AB83C008AC195 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		60B8A2002C7AB934008AC195 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		60B8A2022C7ABBD2008AC195 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -48,18 +50,60 @@
 			isa = PBXGroup;
 			children = (
 				058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */,
-				60B8A1FE2C7AB83C008AC195 /* ListView.swift */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		606BD4FB2C7CEFC5005AF5B4 /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
 				60B8A2002C7AB934008AC195 /* ListViewModel.swift */,
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		606BD4FC2C7CEFF9005AF5B4 /* views */ = {
+			isa = PBXGroup;
+			children = (
 				60B8A2022C7ABBD2008AC195 /* HomeView.swift */,
 				60B8A2042C7ABDFC008AC195 /* MapView.swift */,
 				60B8A2062C7AC7E0008AC195 /* WorldView.swift */,
+				60B8A1FE2C7AB83C008AC195 /* ListView.swift */,
 			);
-			path = "Preview Content";
+			path = views;
+			sourceTree = "<group>";
+		};
+		606BD4FE2C7CF0A6005AF5B4 /* presentation */ = {
+			isa = PBXGroup;
+			children = (
+				606BD4FF2C7CF0D6005AF5B4 /* application */,
+				606BD4FB2C7CEFC5005AF5B4 /* viewModels */,
+				606BD4FC2C7CEFF9005AF5B4 /* views */,
+			);
+			path = presentation;
+			sourceTree = "<group>";
+		};
+		606BD4FF2C7CF0D6005AF5B4 /* application */ = {
+			isa = PBXGroup;
+			children = (
+				2152FB032600AC8F00CF470E /* iOSApp.swift */,
+				7555FF82242A565900829871 /* ContentView.swift */,
+			);
+			path = application;
+			sourceTree = "<group>";
+		};
+		606BD5002C7CF1BF005AF5B4 /* domain */ = {
+			isa = PBXGroup;
+			children = (
+				606BD5012C7CF366005AF5B4 /* PokemonInfo.swift */,
+			);
+			path = domain;
 			sourceTree = "<group>";
 		};
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
+				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				AB1DB47929225F7C00F7AF9C /* Configuration */,
 				7555FF7D242A565900829871 /* iosApp */,
 				7555FF7C242A565900829871 /* Products */,
@@ -77,11 +121,10 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
-				058557BA273AAA24004C7B11 /* Assets.xcassets */,
-				7555FF82242A565900829871 /* ContentView.swift */,
-				7555FF8C242A565B00829871 /* Info.plist */,
-				2152FB032600AC8F00CF470E /* iOSApp.swift */,
 				058557D7273AAEEB004C7B11 /* Preview Content */,
+				606BD5002C7CF1BF005AF5B4 /* domain */,
+				606BD4FE2C7CF0A6005AF5B4 /* presentation */,
+				7555FF8C242A565B00829871 /* Info.plist */,
 			);
 			path = iosApp;
 			sourceTree = "<group>";
@@ -192,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
+				606BD5022C7CF366005AF5B4 /* PokemonInfo.swift in Sources */,
 				60B8A2052C7ABDFC008AC195 /* MapView.swift in Sources */,
 				60B8A2072C7AC7E0008AC195 /* WorldView.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
@@ -338,7 +382,7 @@
 					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
 				INFOPLIST_FILE = iosApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -365,7 +409,7 @@
 					"$(SRCROOT)/../shared/build/xcode-frameworks/$(CONFIGURATION)/$(SDK_NAME)",
 				);
 				INFOPLIST_FILE = iosApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
