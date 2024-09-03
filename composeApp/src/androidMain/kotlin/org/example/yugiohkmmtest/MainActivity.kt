@@ -10,10 +10,10 @@ import org.example.yugiohkmmtest.screens.MainScreen
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        //val viewModel : MainViewModel by viewModels()
         setContent {
-            //App()
-            MainScreen()
+            App()
+            //MainScreen(viewModel.uiState.value)
         }
     }
 }

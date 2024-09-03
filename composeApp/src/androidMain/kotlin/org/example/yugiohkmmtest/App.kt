@@ -10,6 +10,15 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import moe.tlaster.precompose.PreComposeApp
+import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
+import moe.tlaster.precompose.viewmodel.viewModel
+import org.example.yugiohkmmtest.data.CardManager
+import org.example.yugiohkmmtest.data.CardRepoImpl
+import org.example.yugiohkmmtest.domain.CardRepository
+
+import org.example.yugiohkmmtest.screens.MainScreen
+import org.example.yugiohkmmtest.viewModel.MainViewModel
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -20,18 +29,14 @@ import yugiohkmmtest.composeapp.generated.resources.compose_multiplatform
 @Preview
 fun App() {
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
+        PreComposeApp {
+
+            val viewModel = viewModel(modelClass = MainViewModel::class) {
+                MainViewModel(CardRepoImpl(CardManager))
             }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
-                }
-            }
+            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+            MainScreen(uiState = uiState)
+
         }
     }
 }
