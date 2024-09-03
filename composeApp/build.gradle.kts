@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
+    kotlin("plugin.serialization") version "1.7.10"
 }
 
 kotlin {
@@ -24,6 +25,16 @@ kotlin {
             implementation(libs.androidx.activity.compose)
 //            implementation(libs.google.maps)      // Google Maps
 //            implementation(libs.google.location)  // Google Location
+
+            //Koin
+            implementation(project.dependencies.platform("io.insert-koin:koin-bom:3.5.1"))
+            implementation("io.insert-koin:koin-core")
+            implementation("io.insert-koin:koin-android")
+            api("moe.tlaster:precompose-koin:1.5.10")
+
+            //Ktor
+            implementation(libs.ktor.client.okhttp)
+            implementation(libs.kotlinx.coroutines.android)
 
         }
         commonMain.dependencies {
@@ -43,6 +54,18 @@ kotlin {
             api("moe.tlaster:precompose:1.5.10")
             //ViewModel
             api("moe.tlaster:precompose-viewmodel:1.5.10")
+
+            //Koin
+            implementation(project.dependencies.platform("io.insert-koin:koin-bom:3.5.1"))
+            implementation("io.insert-koin:koin-core")
+            implementation("io.insert-koin:koin-compose")
+            api("moe.tlaster:precompose-koin:1.5.10")
+
+            //Ktor
+            implementation(libs.ktor.client.core)
+            implementation(libs.kotlinx.coroutines.core)
+            implementation(libs.ktor.serialization)
+            implementation(libs.ktor.content.negotiation)
 
 
         }
