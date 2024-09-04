@@ -2,6 +2,10 @@ package org.example.yugiohkmmtest
 
 import android.app.Application
 import org.example.yugiohkmmtest.di.appModule
+import org.example.yugiohkmmtest.di.endpointModule
+import org.example.yugiohkmmtest.di.initKoin
+import org.example.yugiohkmmtest.di.sharedAppModule
+import org.example.yugiohkmmtest.di.useCaseModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin

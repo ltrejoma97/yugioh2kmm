@@ -27,9 +27,12 @@ kotlin {
 //            implementation(libs.google.location)  // Google Location
 
             //Koin
+            //Those dependencies shouldn't be here
             implementation(project.dependencies.platform("io.insert-koin:koin-bom:3.5.1"))
             implementation("io.insert-koin:koin-core")
             implementation("io.insert-koin:koin-android")
+            implementation("io.insert-koin:koin-androidx-compose")
+
             api("moe.tlaster:precompose-koin:1.5.10")
 
             //Ktor

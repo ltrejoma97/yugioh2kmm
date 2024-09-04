@@ -27,6 +27,12 @@ kotlin {
     
     sourceSets {
         commonMain.dependencies {
+            implementation(libs.koin.core)
+            implementation(libs.ktor.client.core)
+            implementation(libs.ktor.content.negotiation)
+//            implementation(libs.ktor.client.darwin)
+            implementation(libs.ktor.serialization)
+            implementation(libs.koin.test)
             // put your Multiplatform dependencies here
         }
     }
@@ -42,4 +48,7 @@ android {
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
     }
+}
+dependencies {
+    implementation(libs.firebase.crashlytics.buildtools)
 }

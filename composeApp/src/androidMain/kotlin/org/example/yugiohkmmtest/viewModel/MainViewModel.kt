@@ -9,28 +9,29 @@ import kotlinx.coroutines.launch
 import moe.tlaster.precompose.viewmodel.ViewModel
 import moe.tlaster.precompose.viewmodel.viewModelScope
 import org.example.yugiohkmmtest.domain.CardRepository
+import org.example.yugiohkmmtest.domain.GetBlueEyesDragonCardsUseCase
 import org.example.yugiohkmmtest.model.CardsList
 
 data class CardsUiState(
     val cardsList: List<CardsList> = emptyList(),
 )
 
-class MainViewModel(private val repository: CardRepository) : ViewModel() {
+class MainViewModel(private val repository: CardRepository, ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CardsUiState())
     val uiState = _uiState.asStateFlow()
 
-    private val allCards = repository.getCards()
+//    private val allCards = repository.getCards()
 
     init {
-        getAllCards()
+//        getAllCards()
     }
 
-    private fun getAllCards() {
-        viewModelScope.launch {
-            _uiState.update { state ->
-                state.copy(cardsList = allCards)
-            }
-        }
-    }
+//    private fun getAllCards() {
+//        viewModelScope.launch {
+//            _uiState.update { state ->
+//                state.copy(cardsList = allCards)
+//            }
+//        }
+//    }
 }
