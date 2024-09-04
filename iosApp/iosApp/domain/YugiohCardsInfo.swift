@@ -8,20 +8,23 @@
 
 import Foundation
 
-struct PokemonInfo: Codable {
-    var data: [Pokemons]
+struct YugiohCardsInfo: Codable {
+    var data: [YugiohCards]
 }
 
-struct Pokemons: Codable{
+struct YugiohCards: Codable, Hashable{
     var id: Int
     var name: String
     var type: String
     var frameType: String
     var desc: String
     var race: String
+    var card_images: [CardImages]
 }
 
-struct CardImages: Codable{
+struct CardImages: Codable, Hashable{
     var id: Int
     var image_url: String
+    var image_url_small: String
+    var image_url_cropped: String
 }

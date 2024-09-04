@@ -7,17 +7,19 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ListView: View {
     
     @ObservedObject var viewModel = ListViewModel()
+    let gridForm = [GridItem(.flexible())]
+    
 
     var body: some View {
      
         VStack {
             
             ScrollView{
-                Text("Primer pokemon \(viewModel.pokemonInfo[0].type)")
                 
                 Text("CARD LIST")
                     .font(.title3)
@@ -26,135 +28,36 @@ struct ListView: View {
                     .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                     .padding(.top)
                 
-                
-                Button(action: {
-                    viewModel.isImageActive = true
-                    viewModel.name = "Amo de las mentes"
-                    viewModel.atk = "100"
-                    viewModel.def = "200"
-                }, label: {
+                LazyVGrid(columns: gridForm, spacing: 8){
                     
-                    VStack(spacing: 0) {
+                    ForEach(viewModel.yugiohCardsInfo, id: \.self){
+                        cards in
                         
-                        Text("Amo de las mentes")
-                            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
-                            .background(Color("Blue-gray"))
+                        Button(action: {
+                            print("pulse la carta \(cards.name)")
+                        }, label: {
+                            
+                            VStack(spacing: 0) {
+                                
+                                Text("\(cards.name)")
+                                    .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
+                                    .background(Color("Blue-gray"))
+                                
+                                ForEach(cards.card_images, id: \.self){
+                                        images in
+                                    KFImage(URL(string: images.image_url))
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 240, height: 400)
+                                       
+                                }
+                            }
+                            
+                        })
                         
-                        Image("Amo_de_las_mentes")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 240, height: 400)
-                           
                     }
-                    
-                })
-                
-                
-                Button(action: {
-//                    isImageActive = true
-//                    name = "Cadena esoterica"
-//                    atk = "700"
-//                    def = "700"
-                }, label: {
-                    
-                    VStack(spacing: 0) {
-                        
-                        Text("Cadena esoterica")
-                            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
-                            .background(Color("Blue-gray"))
-                        
-                        Image("Cadena_esoterica")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 240, height: 400)
+                }
 
-                    }
-                    
-                })
-                
-                Button(action: {
-//                    isImageActive = true
-//                    name = "Chaos king"
-//                    atk = "4000"
-//                    def = "4000"
-                }, label: {
-                    
-                    VStack(spacing: 0) {
-                        
-                        Text("Chaos king")
-                            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
-                            .background(Color("Blue-gray"))
-                        
-                        Image("Chaos_king")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 240, height: 400)
-                    }
-                    
-                })
-                
-                Button(action: {
-//                    isImageActive = true
-//                    name = "Kunai con cadena"
-//                    atk = "400"
-//                    def = "400"
-                }, label: {
-                    
-                    VStack(spacing: 0) {
-                        
-                        Text("Kunai con cadena")
-                            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
-                            .background(Color("Blue-gray"))
-                        
-                        Image("Kunai_con_cadena")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 240, height: 400)
-                    }
-                    
-                })
-                
-                Button(action: {
-//                    isImageActive = true
-//                    name = "Mago oscuro"
-//                    atk = "2500"
-//                    def = "2100"
-                }, label: {
-                    
-                    VStack(spacing: 0) {
-                        
-                        Text("Mago oscuro")
-                            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
-                            .background(Color("Blue-gray"))
-                        
-                        Image("Mago_oscuro")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 240, height: 400)
-                    }
-                    
-                })
-                
-                Button(action: {
-//                    isImageActive = true
-//                    name = "Payaso del sueño"
-//                    atk = "1200"
-//                    def = "900"
-                }, label: {
-                    
-                    VStack(spacing: 0) {
-                        
-                        Text("Payaso del sueño")
-                            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
-                            .background(Color("Blue-gray"))
-                        
-                        Image("Payaso_de_ sueno")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 240, height: 400)
-                    }
-                    
-                })
             }
         }.frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .center)
             .padding(.horizontal)
@@ -168,24 +71,6 @@ struct ListView: View {
       
     }
 }
-
-struct DetailView: View {
-    private var viewModel: ListViewModel = ListViewModel()
-    var body: some View {
-        
-        VStack{
-            
-            Text(viewModel.name)
-            
-            Text(viewModel.atk)
-            
-            Text(viewModel.def)
-        }
-    }
-}
-
-
-
 
 
 #Preview {

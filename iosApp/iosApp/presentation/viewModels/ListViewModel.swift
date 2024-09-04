@@ -11,12 +11,17 @@ import SwiftUI
 class ListViewModel: ObservableObject{
     
     @State var isImageActive = false
-    @State var name = ""
     @State var atk = ""
-    @State var def = ""
+    @State var def = "" 
+    @State var id: Int = 0
+    @State var name: String = ""
+    @State var type: String = ""
+    @State var desc: String = ""
+    @State var race: String = ""
+    @State var card_images: [CardImages] = []
     
     
-    @Published var pokemonInfo = [Pokemons]()
+    @Published var yugiohCardsInfo = [YugiohCards]()
     
     init() {
         
@@ -33,10 +38,10 @@ class ListViewModel: ObservableObject{
                     print("tamano del Json: \(jsonData)")
                     
                     let decodeData = try
-                    JSONDecoder().decode(PokemonInfo.self, from: jsonData)
+                    JSONDecoder().decode(YugiohCardsInfo.self, from: jsonData)
                     
                     DispatchQueue.main.async {
-                        self.pokemonInfo.append(contentsOf: decodeData.data)
+                        self.yugiohCardsInfo.append(contentsOf: decodeData.data)
                     }
                     
                 }
