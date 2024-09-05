@@ -7,26 +7,20 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.lifecycle.lifecycleScope
-import kotlinx.coroutines.launch
-import org.example.yugiohkmmtest.domain.GetBlueEyesDragonCardsUseCase
+
 import org.example.yugiohkmmtest.viewModel.MainViewModel
 import org.koin.android.ext.android.get
-import org.koin.androidx.compose.get
-import org.koin.core.module.dsl.singleOf
-import org.koin.dsl.module
-import org.koin.java.KoinJavaComponent.inject
+
 
 class MainActivity : ComponentActivity() {
-//    val presenter: GetBlueEyesDragonCardsUseCase by inject(get())
 
     @SuppressLint("CoroutineCreationDuringComposition")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContent {
-
-
+            val vm :MainViewModel = MainViewModel(get())
+            vm.getCards()
             App()
             //MainScreen(viewModel.uiState.value)
         }

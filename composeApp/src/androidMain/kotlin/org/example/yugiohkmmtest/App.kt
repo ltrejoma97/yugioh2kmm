@@ -15,15 +15,15 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Preview
 fun App() {
 
-    MaterialTheme {
-        PreComposeApp {
-
-            val viewModel = viewModel(modelClass = MainViewModel::class) {
-                MainViewModel(CardRepoImpl(CardManager))
-            }
-            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-            MainScreen(uiState = uiState)
-
-        }
-    }
+//    MaterialTheme {
+//        PreComposeApp {
+//
+//            val viewModel = viewModel(modelClass = MainViewModel::class) {
+//                MainViewModel(CardRepoImpl(CardManager))
+//            }
+//            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+//            MainScreen(uiState = uiState)
+//
+//        }
+//    }
 }
