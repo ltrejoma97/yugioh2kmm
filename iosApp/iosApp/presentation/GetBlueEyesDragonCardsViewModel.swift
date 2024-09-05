@@ -9,9 +9,21 @@
 import Foundation
 import Shared
 
-extension PostScreen{
+extension GetBlueEyesDragonCardsScreen{
     
-    @MainActor class PostViewModel: ObservableObject{
-        private let getPostUseCase = GetBlueEyesDragonCardsUseCase()
+    @MainActor class GetBlueEyesDragonCardsViewModel: ObservableObject{
+        private let getBlueEyesDragonCardsUseCase: () = GetBlueEyesDragonCardsUseCase()
+        
+        @Published private(set) var blueEyesDragons: [YugiohCardsInfo] = []
+        
+        func getBlueEyesDragons() async{
+            do{
+//                let getBlueEyesDragons: () = try await getBlueEyesDragonCardsUseCase.invoke()
+                
+            }catch{
+                
+            }
+        }
+        
     }
 }
