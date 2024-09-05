@@ -14,8 +14,3 @@ class GetBlueEyesDragonCardsUseCaseImp(val endpoint: Endpoint) : GetBlueEyesDrag
         return endpoint.getblueDragon()
     }
 }
-
-class GetBlueEyesDragonCardsUseCaseHelper : KoinComponent {
-    private val useCase : GetBlueEyesDragonCardsUseCase by inject()
-    suspend fun callUseCase() : String = useCase.invoke()
-}
