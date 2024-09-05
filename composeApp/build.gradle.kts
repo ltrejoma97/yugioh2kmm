@@ -31,13 +31,14 @@ kotlin {
             implementation(project.dependencies.platform("io.insert-koin:koin-bom:3.5.1"))
             implementation("io.insert-koin:koin-core")
             implementation("io.insert-koin:koin-android")
-            implementation("io.insert-koin:koin-androidx-compose")
+            implementation(libs.koin.androidx.compose)
 
             api("moe.tlaster:precompose-koin:1.5.10")
 
             //Ktor
             implementation(libs.ktor.client.okhttp)
             implementation(libs.kotlinx.coroutines.android)
+            implementation(libs.koin.android)
 
         }
         commonMain.dependencies {

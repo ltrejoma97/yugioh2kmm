@@ -16,10 +16,18 @@ data class CardsUiState(
     val cardsList: List<CardsList> = emptyList(),
 )
 
-class MainViewModel(private val repository: CardRepository, ) : ViewModel() {
+class MainViewModel(private val getGetBlueEyesDragonCardsUseCase: GetBlueEyesDragonCardsUseCase, ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CardsUiState())
     val uiState = _uiState.asStateFlow()
+
+    fun getCards(){
+        viewModelScope.launch {
+            val response = getGetBlueEyesDragonCardsUseCase.invoke()
+            println(response)
+
+        }
+    }
 
 //    private val allCards = repository.getCards()
 
