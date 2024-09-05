@@ -18,7 +18,7 @@ extension GetBlueEyesDragonCardsScreen{
         
         func getBlueEyesDragons() async{
             do{
-//                let getBlueEyesDragons: () = try await getBlueEyesDragonCardsUseCase.invoke()
+                let getBlueEyesDragons: () = try await getBlueEyesDragonCardsUseCase.invoke()
                 
             }catch{
                 
