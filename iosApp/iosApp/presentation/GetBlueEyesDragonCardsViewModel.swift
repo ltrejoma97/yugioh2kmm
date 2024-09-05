@@ -12,16 +12,16 @@ import Shared
 extension GetBlueEyesDragonCardsScreen{
     
     @MainActor class GetBlueEyesDragonCardsViewModel: ObservableObject{
-        private let getBlueEyesDragonCardsUseCase: () = GetBlueEyesDragonCardsUseCase()
-        
+        private let getBlueEyesDragonCardsUseCase = GetBlueEyesDragonCardsUseCaseHelper.init()
         @Published private(set) var blueEyesDragons: [YugiohCardsInfo] = []
         
         func getBlueEyesDragons() async{
             do{
-                let getBlueEyesDragons: () = try await getBlueEyesDragonCardsUseCase.invoke()
+                let getBlueEyesDragons = try await getBlueEyesDragonCardsUseCase.callUseCase()
+                print("\(getBlueEyesDragons)")
                 
             }catch{
-                
+                print("error: getBlueEyesDragons")
             }
         }
         
