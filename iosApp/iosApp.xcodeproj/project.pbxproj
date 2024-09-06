@@ -17,7 +17,6 @@
 		60B8A2032C7ABBD2008AC195 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8A2022C7ABBD2008AC195 /* HomeView.swift */; };
 		60B8A2052C7ABDFC008AC195 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8A2042C7ABDFC008AC195 /* MapView.swift */; };
 		60B8A2072C7AC7E0008AC195 /* WorldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8A2062C7AC7E0008AC195 /* WorldView.swift */; };
-		60D9B3DA2C8A19150082557A /* GetBlueEyesDragonCardsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D9B3D92C8A19150082557A /* GetBlueEyesDragonCardsUseCase.swift */; };
 		60D9B3DC2C8A1DC50082557A /* GetBlueEyesDragonCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D9B3DB2C8A1DC50082557A /* GetBlueEyesDragonCards.swift */; };
 		60D9B3DE2C8A1E930082557A /* GetBlueEyesDragonCardsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D9B3DD2C8A1E930082557A /* GetBlueEyesDragonCardsViewModel.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
@@ -33,7 +32,6 @@
 		60B8A2022C7ABBD2008AC195 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		60B8A2042C7ABDFC008AC195 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		60B8A2062C7AC7E0008AC195 /* WorldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldView.swift; sourceTree = "<group>"; };
-		60D9B3D92C8A19150082557A /* GetBlueEyesDragonCardsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBlueEyesDragonCardsUseCase.swift; sourceTree = "<group>"; };
 		60D9B3DB2C8A1DC50082557A /* GetBlueEyesDragonCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBlueEyesDragonCards.swift; sourceTree = "<group>"; };
 		60D9B3DD2C8A1E930082557A /* GetBlueEyesDragonCardsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBlueEyesDragonCardsViewModel.swift; sourceTree = "<group>"; };
 		7555FF7B242A565900829871 /* yugiohkmmtest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = yugiohkmmtest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -114,7 +112,6 @@
 		60D9B3D82C8A18E40082557A /* usecase */ = {
 			isa = PBXGroup;
 			children = (
-				60D9B3D92C8A19150082557A /* GetBlueEyesDragonCardsUseCase.swift */,
 			);
 			path = usecase;
 			sourceTree = "<group>";
@@ -258,7 +255,6 @@
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				60D9B3DC2C8A1DC50082557A /* GetBlueEyesDragonCards.swift in Sources */,
 				606BD5022C7CF366005AF5B4 /* YugiohCardsInfo.swift in Sources */,
-				60D9B3DA2C8A19150082557A /* GetBlueEyesDragonCardsUseCase.swift in Sources */,
 				60B8A2052C7ABDFC008AC195 /* MapView.swift in Sources */,
 				60B8A2072C7AC7E0008AC195 /* WorldView.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
