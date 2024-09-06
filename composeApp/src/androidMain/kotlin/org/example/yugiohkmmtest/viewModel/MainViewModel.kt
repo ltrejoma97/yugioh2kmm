@@ -16,7 +16,7 @@ data class CardsUiState(
     val cardsList: List<CardsList> = emptyList(),
 )
 
-class MainViewModel(private val getGetBlueEyesDragonCardsUseCase: GetBlueEyesDragonCardsUseCase, ) : ViewModel() {
+class MainViewModel(private val getGetBlueEyesDragonCardsUseCase: GetBlueEyesDragonCardsUseCase,private val cardsRepository: CardRepository ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CardsUiState())
     val uiState = _uiState.asStateFlow()

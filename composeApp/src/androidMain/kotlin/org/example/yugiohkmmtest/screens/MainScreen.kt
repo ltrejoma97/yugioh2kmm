@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import moe.tlaster.precompose.PreComposeApp
 import org.example.yugiohkmmtest.viewModel.CardsUiState
+import org.example.yugiohkmmtest.viewModel.ListScreenViewModel
 
 
 @Composable
@@ -59,9 +60,14 @@ fun MainScreen(uiState: CardsUiState) {
 
 
 @Composable
-fun ContentScreen(modifier: Modifier, selectedIndex: Int, uiState: CardsUiState) {
+fun ContentScreen(
+    modifier: Modifier,
+    selectedIndex: Int,
+    uiState: CardsUiState,
+
+) {
     when (selectedIndex) {
-        0 -> ListScreen(uiState)
+        0 -> ListScreenState(uiState)
         1 -> ShowingMap()
         2 -> Hello()
     }

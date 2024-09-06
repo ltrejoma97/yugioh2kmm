@@ -20,6 +20,8 @@ koin = "3.2.0"
 firebaseCrashlyticsBuildtools = "3.0.2"
 
 [libraries]
+insert-koin-koin-android = { module = "io.insert-koin:koin-android" }
+insert-koin-koin-core = { module = "io.insert-koin:koin-core" }
 koin-androidx-compose = { module = "io.insert-koin:koin-androidx-compose" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }

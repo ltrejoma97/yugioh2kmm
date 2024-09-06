@@ -29,8 +29,8 @@ kotlin {
             //Koin
             //Those dependencies shouldn't be here
             implementation(project.dependencies.platform("io.insert-koin:koin-bom:3.5.1"))
-            implementation("io.insert-koin:koin-core")
-            implementation("io.insert-koin:koin-android")
+            implementation(libs.insert.koin.koin.core)
+            implementation(libs.insert.koin.koin.android)
             implementation(libs.koin.androidx.compose)
 
             api("moe.tlaster:precompose-koin:1.5.10")

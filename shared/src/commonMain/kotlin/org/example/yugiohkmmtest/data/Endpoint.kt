@@ -24,6 +24,7 @@ class EndpointImp(): Endpoint {
 
     override suspend fun testChannel() {
         val response: HttpResponse = client.get("https://ktor.io/")
+
         println(response.status)
         //client.close()
     }

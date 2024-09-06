@@ -6,10 +6,13 @@ import org.koin.dsl.module
 import org.example.yugiohkmmtest.data.CardManager
 import org.example.yugiohkmmtest.data.CardRepoImpl
 import org.example.yugiohkmmtest.domain.CardRepository
+import org.example.yugiohkmmtest.viewModel.ListScreenViewModel
 import org.example.yugiohkmmtest.viewModel.MainViewModel
 
 fun appModule() = module {
     single { CardManager }.withOptions { createdAtStart() }
     single<CardRepository> { CardRepoImpl(get()) }
-    factory { MainViewModel(get()) }
+
+    factory { MainViewModel(get(), get()) }
+    single { ListScreenViewModel(get()) }
 }
