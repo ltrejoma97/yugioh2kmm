@@ -1,8 +1,7 @@
 package org.example.yugiohkmmtest.domain
 
 import org.example.yugiohkmmtest.data.Endpoint
-import org.koin.core.component.KoinComponent
-import org.koin.core.component.inject
+
 
 
 interface GetBlueEyesDragonCardsUseCase {

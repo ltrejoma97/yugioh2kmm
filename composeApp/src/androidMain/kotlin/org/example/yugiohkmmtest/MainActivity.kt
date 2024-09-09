@@ -19,7 +19,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-
+            val mainViewModel : MainViewModel= MainViewModel(get(), get())
+            mainViewModel.getCards()
             App()
             //MainScreen(viewModel.uiState.value)
         }

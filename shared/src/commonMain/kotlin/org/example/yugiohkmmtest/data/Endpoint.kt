@@ -6,6 +6,9 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
 import io.ktor.client.statement.HttpResponse
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonBuilder
+import kotlinx.serialization.json.JsonConfiguration
+import org.example.yugiohkmmtest.domain.DTO.CardDTOResponse
 
 interface Endpoint {
     suspend fun testChannel()
@@ -31,13 +34,17 @@ class EndpointImp(): Endpoint {
 
     override suspend fun getblueDragon(): String {
         val response :String = client.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=Blue-Eyes").body<String>()?:"Error avisale a luis"
-
+        //INTERNAL CONSTRUCTOR
+        val json = Json {ignoreUnknownKeys = true}
+        json.configuration.ignoreUnknownKeys
+        val obj = json.decodeFromString<CardDTOResponse>(response)
+        println(obj.data.get(1))
         return response
     }
 
 
 }
-
+//
 //fun deserializeYugiohCardResponse(response: String): YugiohCardsResponse? {
 //    val gson = Gson()
 //
