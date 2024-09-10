@@ -12,7 +12,7 @@ import org.example.yugiohkmmtest.domain.DTO.CardDTOResponse
 
 interface Endpoint {
     suspend fun testChannel()
-    suspend fun getblueDragon(): CardDTOResponse
+    suspend fun getblueDragon(): String
 }
 
 class EndpointImp(): Endpoint {
@@ -32,14 +32,14 @@ class EndpointImp(): Endpoint {
         //client.close()
     }
 
-    override suspend fun getblueDragon(): CardDTOResponse {
+    override suspend fun getblueDragon(): String {
         val response :String = client.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=Blue-Eyes").body<String>()?:"Error avisale a luis"
         //INTERNAL CONSTRUCTOR
         val json = Json {ignoreUnknownKeys = true}
         json.configuration.ignoreUnknownKeys
         val obj = json.decodeFromString<CardDTOResponse>(response)
         println(obj.data.get(1))
-        return obj
+        return response
     }
 
 
