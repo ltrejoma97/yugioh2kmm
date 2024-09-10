@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct WorldView: View {
+struct WorldScreen: View {
     var body: some View {
     
         VStack {
@@ -19,6 +19,6 @@ struct WorldView: View {
 }
 
 #Preview {
-    WorldView()
+    WorldScreen()
 }
 

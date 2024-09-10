@@ -9,7 +9,7 @@
 import SwiftUI
 import MapKit
 
-struct MapView: View {
+struct MapScreen: View {
     
     let pin1 = CLLocationCoordinate2D(latitude: 9.142891, longitude: -66.38551)
     
@@ -30,6 +30,6 @@ struct MapView: View {
 }
 
 #Preview {
- MapView()
+ MapScreen()
    
 }

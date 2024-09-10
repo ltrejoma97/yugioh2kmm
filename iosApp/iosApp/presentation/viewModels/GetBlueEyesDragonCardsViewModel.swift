@@ -23,6 +23,5 @@ extension GetBlueEyesDragonCardsScreen{
                 print(error.localizedDescription)
             }
         }
-        
     }
 }

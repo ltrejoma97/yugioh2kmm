@@ -9,7 +9,7 @@ import SwiftUI
 
 
 
-struct HomeView: View {
+struct HomeScreen: View {
 
     
     @State var tabSeleccionado = 1
@@ -18,7 +18,7 @@ struct HomeView: View {
         
             
             
-            ListView()
+            GetBlueEyesDragonCardsScreen()
                 .font(.system(size: 30, weight: .bold, design: .rounded))
                 .tabItem {
                     Image(systemName: "list.bullet")
@@ -28,7 +28,7 @@ struct HomeView: View {
                 }.tag(0)
             
 //            
-            MapView()
+            MapScreen()
                 .font(.system(size: 30, weight: .bold, design: .rounded))
                 .tabItem {
                     Image(systemName: "map")
@@ -37,7 +37,7 @@ struct HomeView: View {
                 }.tag(1)
 //            
 //            
-            WorldView()
+            WorldScreen()
                 .font(.system(size: 30, weight: .bold, design: .rounded))
                 .tabItem {
                     Image(systemName: "network")
@@ -49,6 +49,6 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeScreen()
 }
 
