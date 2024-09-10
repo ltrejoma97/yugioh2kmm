@@ -20,15 +20,14 @@ fun App() {
 
         PreComposeApp {
             val viewModel = MainViewModel(get(), get())
+            val listViewModel = ListScreenViewModel(get())
+            val listState by listViewModel.uiState.collectAsStateWithLifecycle()
 
-
-
-//
 //            val viewModel = viewModel(modelClass = MainViewModel::class) {
 //              MainViewModel(CardRepoImpl(CardManager))
 //            }
             val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-            MainScreen(uiState = uiState)
+            MainScreen(listState)
 
         }
     }

@@ -1,19 +1,17 @@
 package org.example.yugiohkmmtest.viewModel
 
 
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import moe.tlaster.precompose.viewmodel.ViewModel
 import moe.tlaster.precompose.viewmodel.viewModelScope
 import org.example.yugiohkmmtest.domain.CardRepository
 import org.example.yugiohkmmtest.domain.GetBlueEyesDragonCardsUseCase
-import org.example.yugiohkmmtest.model.CardsList
+import org.example.yugiohkmmtest.model.CardModel
 
 data class CardsUiState(
-    val cardsList: List<CardsList> = emptyList(),
+    val cardsList: List<CardModel> = emptyList(),
 )
 
 class MainViewModel(private val getGetBlueEyesDragonCardsUseCase: GetBlueEyesDragonCardsUseCase,private val cardsRepository: CardRepository ) : ViewModel() {

@@ -6,18 +6,20 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
 import kotlinx.serialization.json.Json
 import org.example.yugiohkmmtest.domain.CardRepository
-import org.example.yugiohkmmtest.model.CardsList
+import org.example.yugiohkmmtest.model.CardDTOResponse
+import org.example.yugiohkmmtest.model.CardModel
 
 private const val BASE_URL = "https://db.ygoprodeck.com/api/v7/cardinfo.php"
+
 class CardRepoImpl(
     private val cardManager: CardManager,
 //    private val httpClient: HttpClient
-    ): CardRepository {
-    override suspend fun getCards(): String {
+) : CardRepository {
+    override suspend fun getCards(): List<CardModel> {
 
-        val client = HttpClient(){
+        val client = HttpClient() {
             install(ContentNegotiation) {
-                Json{
+                Json {
                     isLenient = true
                     ignoreUnknownKeys = true
                 }
@@ -25,10 +27,20 @@ class CardRepoImpl(
         }
 
         return try {
-            val cartas :String = client.get(BASE_URL).body<String>()
-             cartas
-        }catch (e:Exception){
-             "ERROR"
+            val cartas= client.get(BASE_URL).body<List<CardDTOResponse>>()
+            cartas.map {response ->
+                CardModel(
+                    id = response.id,
+                    name = response.name,
+                    type = response.type,
+                    atk = response.atk,
+                    def = response.def
+
+                )
+
+            }
+        } catch (e: Exception) {
+            emptyList()
         }
 
 //        return cardManager.fakeCards
