@@ -9,9 +9,9 @@
 import Foundation
 import Shared
 
-extension GetBlueEyesDragonCardsScreen{
+extension CardListScreen{
     
-    @MainActor class GetBlueEyesDragonCardsViewModel: ObservableObject{
+    @MainActor class CardsListViewModel: ObservableObject{
         private let getBlueEyesDragonCardsUseCaseHelper = GetBlueEyesDragonCardsUseCaseHelper.init()
     @Published private(set) var blueEyesDragons: CardDTOResponse = CardDTOResponse(data: [])
 
