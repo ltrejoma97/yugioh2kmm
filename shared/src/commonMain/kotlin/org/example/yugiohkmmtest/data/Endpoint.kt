@@ -11,7 +11,7 @@ import kotlinx.serialization.json.JsonConfiguration
 import org.example.yugiohkmmtest.domain.DTO.CardDTOResponse
 
 interface Endpoint {
-    suspend fun testChannel()
+     fun testChannel(): String
     suspend fun getblueDragon(): String
 }
 
@@ -25,10 +25,11 @@ class EndpointImp(): Endpoint {
         }
     }
 
-    override suspend fun testChannel() {
-        val response: HttpResponse = client.get("https://ktor.io/")
-
-        println(response.status)
+    override fun testChannel(): String {
+//        val response: HttpResponse = client.get("https://ktor.io/")
+//
+//        println(response.status)
+        return "HOLA soy paddingtong"
         //client.close()
     }
 
