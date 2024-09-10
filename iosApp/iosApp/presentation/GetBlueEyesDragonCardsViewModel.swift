@@ -19,7 +19,7 @@ extension GetBlueEyesDragonCardsScreen{
         func getBlueEyesDragons() async{ 
             do{
                 print("Hola1")
-                let getBlueEyesDragons1 = try await getBlueEyesDragonCardsUseCase.invoke()
+                let getBlueEyesDragons1 =   getBlueEyesDragonCardsUseCase.testChannel()
                 print("Hola2")
                 self.blueEyesDragons = self.blueEyesDragons + getBlueEyesDragons1
                 print("Hola3")
