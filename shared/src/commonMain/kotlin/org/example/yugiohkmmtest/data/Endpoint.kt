@@ -14,7 +14,7 @@ import io.ktor.client.engine.cio.*
 
 interface Endpoint {
      fun testChannel(): String
-    suspend fun getblueDragon(): String
+    suspend fun getblueDragon(): CardDTOResponse
 
 }
 
@@ -36,14 +36,14 @@ class EndpointImp(): Endpoint {
         //client.close()
     }
 
-    override suspend fun getblueDragon(): String {
+    override suspend fun getblueDragon(): CardDTOResponse {
         val response :String = client.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=Blue-Eyes").body<String>()?:"Error avisale a luis"
         //INTERNAL CONSTRUCTOR
         val json = Json {ignoreUnknownKeys = true}
         json.configuration.ignoreUnknownKeys
         val obj = json.decodeFromString<CardDTOResponse>(response)
         println(obj.data.get(1))
-        return response
+        return obj
     }
 
 
