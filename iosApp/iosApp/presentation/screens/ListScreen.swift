@@ -13,7 +13,6 @@ struct ListScreen: View {
     
     @ObservedObject var viewModel = ListViewModel()
     let gridForm = [GridItem(.flexible())]
-    
 
     var body: some View {
      

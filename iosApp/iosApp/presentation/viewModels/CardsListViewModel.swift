@@ -9,16 +9,18 @@
 import Foundation
 import Shared
 
-extension CardListScreen{
+extension CardsListScreen{
     
     @MainActor class CardsListViewModel: ObservableObject{
-        private let getBlueEyesDragonCardsUseCaseHelper = GetBlueEyesDragonCardsUseCaseHelper.init()
-    @Published private(set) var blueEyesDragons: CardDTOResponse = CardDTOResponse(data: [])
+        
+    private let getBlueEyesDragonCardsUseCaseHelper =                   GetBlueEyesDragonCardsUseCaseHelper.init()
+        
+    @Published private(set) var blueEyesDragonsCards: CardDTOResponse = CardDTOResponse(data:[])
 
         func getBlueEyesDragons() async{
             do{
-                let getBlueEyesDragons1 = try await getBlueEyesDragonCardsUseCaseHelper.callUseCase()
-                self.blueEyesDragons =  getBlueEyesDragons1
+                let getBlueEyesDragonsCardsHelper = try await getBlueEyesDragonCardsUseCaseHelper.callUseCase()
+                self.blueEyesDragonsCards =  getBlueEyesDragonsCardsHelper
             }catch{
                 print(error.localizedDescription)
             }

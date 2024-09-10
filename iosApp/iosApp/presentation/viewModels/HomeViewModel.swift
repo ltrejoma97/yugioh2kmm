@@ -7,3 +7,10 @@
 //
 
 import Foundation
+import SwiftUI
+
+class HomeViewModel: ObservableObject{
+    
+    @State var tabSeleccionado = 1
+    
+}

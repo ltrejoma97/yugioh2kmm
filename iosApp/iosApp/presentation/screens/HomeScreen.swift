@@ -10,15 +10,14 @@ import SwiftUI
 
 
 struct HomeScreen: View {
-
     
-    @State var tabSeleccionado = 1
+    @ObservedObject var viewModel = HomeViewModel()
+    
     var body: some View {
-        TabView(selection: $tabSeleccionado){
         
-            
-            
-            GetBlueEyesDragonCardsScreen()
+        TabView(selection: viewModel.$tabSeleccionado){
+        
+            CardsListScreen()
                 .font(.system(size: 30, weight: .bold, design: .rounded))
                 .tabItem {
                     Image(systemName: "list.bullet")
@@ -26,8 +25,7 @@ struct HomeScreen: View {
                     Text("Card List")
      
                 }.tag(0)
-            
-//            
+        
             MapScreen()
                 .font(.system(size: 30, weight: .bold, design: .rounded))
                 .tabItem {
@@ -35,8 +33,7 @@ struct HomeScreen: View {
                     Text("Map")
                     
                 }.tag(1)
-//            
-//            
+           
             WorldScreen()
                 .font(.system(size: 30, weight: .bold, design: .rounded))
                 .tabItem {

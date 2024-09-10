@@ -12,7 +12,6 @@ import Kingfisher
 
 struct CardsListScreen: View {
     @StateObject var viewModel = CardsListViewModel()
-    let gridForm = [GridItem(.flexible())]
     
     var body: some View {
         ScrollView{
@@ -24,8 +23,8 @@ struct CardsListScreen: View {
                     .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                     .padding([.top, .leading, .bottom])
                 
-                if(!viewModel.blueEyesDragons.data.isEmpty){
-                    ForEach(viewModel.blueEyesDragons.data, id: \.self){ cards in
+                if(!viewModel.blueEyesDragonsCards.data.isEmpty){
+                    ForEach(viewModel.blueEyesDragonsCards.data, id: \.self){ cards in
                         Button(action: {}, label: {
                             VStack(spacing: 0) {
                                 Text("\(cards.name)")
