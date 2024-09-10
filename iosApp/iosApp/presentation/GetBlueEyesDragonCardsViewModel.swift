@@ -13,16 +13,12 @@ extension GetBlueEyesDragonCardsScreen{
     
     @MainActor class GetBlueEyesDragonCardsViewModel: ObservableObject{
         private let getBlueEyesDragonCardsUseCaseHelper = GetBlueEyesDragonCardsUseCaseHelper.init()
-        private let getBlueEyesDragonCardsUseCase = GetBlueEyesDragonCardsUseCaseImp(endpoint: EndpointImp())
-        @Published private(set) var blueEyesDragons = ""
-        
-        func getBlueEyesDragons() async{ 
+        @Published private(set) var blueEyesDragons: CardDTOResponse = CardDTOResponse(data: [])
+
+        func getBlueEyesDragons() async{
             do{
-                print("Hola1")
                 let getBlueEyesDragons1 = try await getBlueEyesDragonCardsUseCaseHelper.callUseCase()
-                print("Hola2")
-                self.blueEyesDragons = self.blueEyesDragons + getBlueEyesDragons1
-                print("Hola3")
+                self.blueEyesDragons =  getBlueEyesDragons1
             }catch{
                 print(error.localizedDescription)
             }
