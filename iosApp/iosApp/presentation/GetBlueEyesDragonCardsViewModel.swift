@@ -22,10 +22,9 @@ extension GetBlueEyesDragonCardsScreen{
                 let getBlueEyesDragons1 = try await getBlueEyesDragonCardsUseCase.callUseCase()
                 print("Hola2")
                 self.blueEyesDragons = self.blueEyesDragons + getBlueEyesDragons1
-
                 print("Hola3")
             }catch{
-                print("es un error")
+                print(error.localizedDescription)
             }
         }
         

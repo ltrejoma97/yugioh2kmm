@@ -16,7 +16,7 @@ struct GetBlueEyesDragonCardsScreen: View {
     var body: some View {
         ScrollView{
             VStack(spacing: 10){
-                
+                Text(viewModel.blueEyesDragons)
 //                                ForEach(viewModel.blueEyesDragons, id: \.self){ cards in
 //                                    Button(action: {
 //                //                        print("pulse la carta \()")
@@ -43,7 +43,7 @@ struct GetBlueEyesDragonCardsScreen: View {
 //                
 //                                }
                             }.task {
-                                do {try await getBlueEyesDragonCardsUseCase.callUseCase()}catch{} }
+                              await  viewModel.getBlueEyesDragons() }
                             }
             }
         }
