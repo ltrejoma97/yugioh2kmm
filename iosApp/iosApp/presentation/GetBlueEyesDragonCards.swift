@@ -12,7 +12,7 @@ import Kingfisher
 
 struct GetBlueEyesDragonCardsScreen: View {
     @StateObject var viewModel = GetBlueEyesDragonCardsViewModel()
-    
+    private let getBlueEyesDragonCardsUseCase = GetBlueEyesDragonCardsUseCaseHelper.init()
     var body: some View {
         ScrollView{
             VStack(spacing: 10){
@@ -43,12 +43,12 @@ struct GetBlueEyesDragonCardsScreen: View {
 //                
 //                                }
                             }.task {
-                                await viewModel.getBlueEyesDragons()
+                                do {try await getBlueEyesDragonCardsUseCase.callUseCase()}catch{} }
                             }
             }
         }
   
-}
+
 
 //
 //#Preview {

@@ -14,15 +14,15 @@ extension GetBlueEyesDragonCardsScreen{
     @MainActor class GetBlueEyesDragonCardsViewModel: ObservableObject{
         private let getBlueEyesDragonCardsUseCase = GetBlueEyesDragonCardsUseCaseHelper.init()
         
-//        @Published private(set) var blueEyesDragons = CardDTOResponse(data: <#T##[CardDto]#>)
+        @Published private(set) var blueEyesDragons = ""
         
         func getBlueEyesDragons() async{ 
             do{
                 print("Hola1")
                 let getBlueEyesDragons1 = try await getBlueEyesDragonCardsUseCase.callUseCase()
                 print("Hola2")
-//                self.$blueEyesDragons.append(getBlueEyesDragons1)
-                print("\(getBlueEyesDragons1) estoy aqui")
+                self.blueEyesDragons = self.blueEyesDragons + getBlueEyesDragons1
+
                 print("Hola3")
             }catch{
                 print("es un error")
