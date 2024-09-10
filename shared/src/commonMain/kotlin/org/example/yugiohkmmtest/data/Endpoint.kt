@@ -9,14 +9,17 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonBuilder
 import kotlinx.serialization.json.JsonConfiguration
 import org.example.yugiohkmmtest.domain.DTO.CardDTOResponse
+import io.ktor.client.engine.cio.*
+
 
 interface Endpoint {
      fun testChannel(): String
     suspend fun getblueDragon(): String
+
 }
 
 class EndpointImp(): Endpoint {
-    val client = HttpClient(){
+    val client = HttpClient(CIO){
         install(ContentNegotiation) {
             Json{
                 isLenient = true
