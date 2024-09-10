@@ -5,12 +5,12 @@ import org.example.yugiohkmmtest.domain.DTO.CardDTOResponse
 
 
 interface GetBlueEyesDragonCardsUseCase {
-    suspend fun invoke(): String
+    @Throws(Exception::class) suspend fun invoke(): String
     fun testChannel() : String
 }
 
 class GetBlueEyesDragonCardsUseCaseImp(val endpoint: Endpoint) : GetBlueEyesDragonCardsUseCase{
-    override suspend fun invoke(): String {
+    @Throws(Exception::class) override suspend fun invoke(): String {
         return endpoint.getblueDragon()
     }
 
