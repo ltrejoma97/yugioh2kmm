@@ -10,7 +10,7 @@ interface GetBlueEyesDragonCardsUseCase {
 }
 
 class GetBlueEyesDragonCardsUseCaseImp(val endpoint: Endpoint) : GetBlueEyesDragonCardsUseCase{
-    @Throws(Exception::class) override suspend fun invoke(): String {
+    override suspend fun invoke(): String {
         return endpoint.getblueDragon()
     }
 
