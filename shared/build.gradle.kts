@@ -33,7 +33,7 @@ kotlin {
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.content.negotiation)
             implementation(libs.ktor.client.cio)
-//            implementation(libs.ktor.client.darwin)
+            implementation(libs.ktor.client.darwin)
             implementation(libs.kotlinx.serialization.json)
 
 
@@ -41,6 +41,11 @@ kotlin {
             implementation(libs.koin.test)
             // put your Multiplatform dependencies here
         }
+
+            iosMain.dependencies {
+                implementation(libs.ktor.client.darwin)
+            }
+
     }
 }
 

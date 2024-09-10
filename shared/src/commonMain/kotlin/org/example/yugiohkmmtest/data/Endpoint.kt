@@ -19,7 +19,7 @@ interface Endpoint {
 }
 
 class EndpointImp(): Endpoint {
-    val client = HttpClient(CIO){
+    val client = HttpClient(){
         install(ContentNegotiation) {
             Json{
                 isLenient = true
