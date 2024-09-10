@@ -10,11 +10,20 @@ import SwiftUI
 import Shared
 
 struct GetBlueEyesDragonCardsScreen: View {
-    
+    @StateObject var viewModel = GetBlueEyesDragonCardsViewModel()
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    } 
+        ScrollView{
+            VStack(spacing: 10){
+//                ForEach(viewModel.blueEyesDragons, id: \.id){ cards in
+//
+//                    
+//                }
+                Text("\(viewModel.blueEyesDragons)")
+                
+            }
+        }
+    }
 }
 
 #Preview {
