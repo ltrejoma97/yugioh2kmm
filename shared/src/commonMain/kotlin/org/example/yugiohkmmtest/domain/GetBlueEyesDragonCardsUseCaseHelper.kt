@@ -7,4 +7,5 @@ import org.koin.core.component.inject
 class GetBlueEyesDragonCardsUseCaseHelper : KoinComponent {
     private val useCase : GetBlueEyesDragonCardsUseCase by inject()
     suspend fun callUseCase() : String = useCase.invoke()
+    fun testChannel(): String = useCase.testChannel()
 }
