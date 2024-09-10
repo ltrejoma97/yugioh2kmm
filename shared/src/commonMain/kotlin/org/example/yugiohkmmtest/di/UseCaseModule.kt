@@ -7,7 +7,7 @@ import org.koin.dsl.module
 val useCaseModule = module {
 
     // Singleton GetYugiohCardsUseCase
-    single<GetBlueEyesDragonCardsUseCase> { GetBlueEyesDragonCardsUseCaseImp(get()) }
+    factory <GetBlueEyesDragonCardsUseCase> { GetBlueEyesDragonCardsUseCaseImp(get()) }
 
 
 }
