@@ -1,5 +1,6 @@
 package org.example.yugiohkmmtest.screens
 
+import android.util.Log
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
@@ -32,8 +33,9 @@ fun MainScreen(listState: ListScreenUIState) {
             NavItem(label = "Map", icon = Icons.Default.LocationOn),
             NavItem(label = "Hello", icon = Icons.Default.Person)
         )
-
+//Almacenar el indice de la barra de navegación. iniciando en 0 "List"
         var selectedIndex by remember { mutableStateOf(0) }
+
         Scaffold(
             modifier = Modifier.fillMaxSize(),
             bottomBar = {
@@ -69,7 +71,9 @@ fun ContentScreen(
 
 ) {
     when (selectedIndex) {
-        0 -> ListScreenState(listState)
+        0 ->{
+            Log.d("MainScreen", "ListState: ${listState.responseCards}")
+            ListScreenState(listState)}
         1 -> ShowingMap()
         2 -> Hello()
     }

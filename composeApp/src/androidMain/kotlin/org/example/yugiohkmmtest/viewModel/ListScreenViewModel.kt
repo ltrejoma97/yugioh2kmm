@@ -11,6 +11,7 @@ import kotlinx.coroutines.launch
 import moe.tlaster.precompose.viewmodel.ViewModel
 import moe.tlaster.precompose.viewmodel.viewModelScope
 import org.example.yugiohkmmtest.domain.CardRepository
+import org.example.yugiohkmmtest.model.CardDto
 import org.example.yugiohkmmtest.model.CardModel
 
 data class ListScreenUIState (

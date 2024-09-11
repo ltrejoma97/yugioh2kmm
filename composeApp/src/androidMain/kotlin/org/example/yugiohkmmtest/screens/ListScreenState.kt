@@ -18,6 +18,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.example.yugiohkmmtest.R
+import org.example.yugiohkmmtest.model.CardDto
 import org.example.yugiohkmmtest.model.CardModel
 import org.example.yugiohkmmtest.viewModel.ListScreenUIState
 import org.example.yugiohkmmtest.viewModel.ListScreenViewModel
@@ -25,8 +26,8 @@ import org.koin.androidx.compose.get
 
 @Composable
 fun ListScreenState(listState: ListScreenUIState) {
-    val listScreenViewModel : ListScreenViewModel = ListScreenViewModel(get())
-    listScreenViewModel.getAllCards()
+    //val listScreenViewModel : ListScreenViewModel = ListScreenViewModel(get())
+    //listScreenViewModel.getAllCards()
     LazyColumn {
 //        item { Text(text = listScreenViewModel.uiState.responseCards) }
         items(listState.responseCards) {
