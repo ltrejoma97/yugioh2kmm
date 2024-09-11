@@ -9,11 +9,10 @@
 import SwiftUI
 import Kingfisher
 
-struct ListView: View {
+struct ListScreen: View {
     
     @ObservedObject var viewModel = ListViewModel()
     let gridForm = [GridItem(.flexible())]
-    
 
     var body: some View {
      
@@ -74,5 +73,5 @@ struct ListView: View {
 
 
 #Preview {
-    ListView()
+    ListScreen()
 }
