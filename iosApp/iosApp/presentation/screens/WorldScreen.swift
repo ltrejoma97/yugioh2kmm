@@ -7,18 +7,31 @@
 //
 
 import SwiftUI
+import Shared
 
 struct WorldScreen: View {
+    
+    var isImageActive: Bool
+    var atk: Int32
+    var def: Int32
+    var id: Int32
+    var name: String
+    var type: String
+    var desc: String
+    var race: String
+    var card_images: [CardImages]
+    
+    
     var body: some View {
     
         VStack {
-            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            Text(name)
     
         }
     }
 }
 
-#Preview {
-    WorldScreen()
-}
+//#Preview {
+//    WorldScreen()
+//}
 

@@ -11,6 +11,6 @@ import SwiftUI
 
 class HomeViewModel: ObservableObject{
     
-    @State var tabSeleccionado = 1
+    @State var tabSeleccionado = 0
     
 }

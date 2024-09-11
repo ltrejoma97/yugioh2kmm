@@ -19,10 +19,10 @@ struct YugiohCards: Codable, Hashable{
     var frameType: String
     var desc: String
     var race: String
-    var card_images: [CardImages]
+    var card_images: [CardImages1]
 }
 
-struct CardImages: Codable, Hashable{
+struct CardImages1: Codable, Hashable{
     var id: Int
     var image_url: String
     var image_url_small: String

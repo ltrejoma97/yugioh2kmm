@@ -18,7 +18,7 @@ class ListViewModel: ObservableObject{
     @State var type: String = ""
     @State var desc: String = ""
     @State var race: String = ""
-    @State var card_images: [CardImages] = []
+    @State var card_images: [CardImages1] = []
     
     
     @Published var yugiohCardsInfo = [YugiohCards]()

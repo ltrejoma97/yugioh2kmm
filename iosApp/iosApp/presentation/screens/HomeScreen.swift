@@ -34,7 +34,7 @@ struct HomeScreen: View {
                     
                 }.tag(1)
            
-            WorldScreen()
+            HelloWorldScreen()
                 .font(.system(size: 30, weight: .bold, design: .rounded))
                 .tabItem {
                     Image(systemName: "network")
