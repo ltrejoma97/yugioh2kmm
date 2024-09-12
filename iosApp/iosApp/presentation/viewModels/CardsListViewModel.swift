@@ -15,18 +15,9 @@ extension CardsListScreen{
     @MainActor class CardsListViewModel: ObservableObject{
         
     @State var uiObject: YugiohCardsUiObject =  YugiohCardsUiObject()
-    @State var isImageActive = false
-    @State var atk: Int32 = 0
-    @State var def: Int32 = 0
-    @State var id: Int32 = 0
-    @State var name: String = ""
-    @State var type: String = ""
-    @State var desc: String = ""
-    @State var race: String = ""
-    @State var card_images: [CardImages] = []
-
+    @State var isImageActive: Bool = false
         
-    private let getBlueEyesDragonCardsUseCaseHelper =                   GetBlueEyesDragonCardsUseCaseHelper.init()
+    private let getBlueEyesDragonCardsUseCaseHelper = GetBlueEyesDragonCardsUseCaseHelper.init()
         
     @Published private(set) var blueEyesDragonsCards: CardDTOResponse = CardDTOResponse(data:[])
 
