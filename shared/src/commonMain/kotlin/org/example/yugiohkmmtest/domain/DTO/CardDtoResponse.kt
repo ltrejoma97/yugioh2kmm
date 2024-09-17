@@ -1,11 +1,11 @@
 package org.example.yugiohkmmtest.domain.DTO
 
+import io.ktor.websocket.FrameType
 import kotlinx.serialization.Serializable
 
 
 @Serializable
 data class CardDTOResponse(
-
     val data: List<CardDto>,
     )
 
@@ -13,12 +13,13 @@ data class CardDTOResponse(
 @Serializable
 data class CardDto(
     val id :Int,
-    val name : String,
+    val name : Int,
     val type : String,
     val desc :String,
     val race : String="",
     val ygoprodeck_url : String,
     val archetype : String,
+    val frameType: String,
     val humanReadableCardType : String,
     val atk : Int=0,
     val def : Int=0,

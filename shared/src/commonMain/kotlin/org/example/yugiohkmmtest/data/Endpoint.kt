@@ -42,7 +42,6 @@ class EndpointImp(): Endpoint {
         val json = Json {ignoreUnknownKeys = true}
         json.configuration.ignoreUnknownKeys
         val obj = json.decodeFromString<CardDTOResponse>(response)
-        println(obj.data.get(1))
         return obj
     }
 

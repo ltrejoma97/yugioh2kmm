@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     kotlin("plugin.serialization") version "2.0.20"
+    id("io.realm.kotlin") version "2.0.0"
+
 
 }
 
@@ -36,6 +38,9 @@ kotlin {
             implementation(libs.kotlinx.serialization.json)
             implementation(libs.ktor.serialization)
             implementation(libs.koin.test)
+            implementation(libs.library.sync)
+
+
             // put your Multiplatform dependencies here
         }
 

@@ -2,6 +2,7 @@ package org.example.yugiohkmmtest.viewModel
 
 
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -10,13 +11,16 @@ import moe.tlaster.precompose.viewmodel.ViewModel
 import moe.tlaster.precompose.viewmodel.viewModelScope
 import org.example.yugiohkmmtest.domain.CardRepository
 import org.example.yugiohkmmtest.domain.GetBlueEyesDragonCardsUseCase
+import org.example.yugiohkmmtest.domain.useCases.RealmTestUseCase
 import org.example.yugiohkmmtest.model.CardsList
 
 data class CardsUiState(
     val cardsList: List<CardsList> = emptyList(),
 )
 
-class MainViewModel(private val getGetBlueEyesDragonCardsUseCase: GetBlueEyesDragonCardsUseCase,private val cardsRepository: CardRepository ) : ViewModel() {
+class MainViewModel(private val getGetBlueEyesDragonCardsUseCase: GetBlueEyesDragonCardsUseCase,
+                    private val cardsRepository: CardRepository,
+        private val realmTestUseCase: RealmTestUseCase) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CardsUiState())
     val uiState = _uiState.asStateFlow()
@@ -28,6 +32,18 @@ class MainViewModel(private val getGetBlueEyesDragonCardsUseCase: GetBlueEyesDra
 
         }
     }
+
+    fun testPersistenceWrite(){
+        viewModelScope.launch(Dispatchers.IO) {
+            realmTestUseCase.writeTestChannel()
+        }
+    }
+    fun testPersistenceRead(){
+        viewModelScope.launch(Dispatchers.IO) {
+            realmTestUseCase.readTestChannel()
+        }
+    }
+
 
 //    private val allCards = repository.getCards()
 

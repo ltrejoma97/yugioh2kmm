@@ -19,7 +19,7 @@ fun App() {
 
 
         PreComposeApp {
-            val viewModel = MainViewModel(get(), get())
+            val viewModel = MainViewModel(get(), get(), get())
 
 
 

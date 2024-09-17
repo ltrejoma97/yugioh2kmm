@@ -13,6 +13,6 @@ fun appModule() = module {
     single { CardManager }.withOptions { createdAtStart() }
     single<CardRepository> { CardRepoImpl(get()) }
 
-    factory { MainViewModel(get(), get()) }
+    factory { MainViewModel(get(), get(), get()) }
     single { ListScreenViewModel(get()) }
 }
