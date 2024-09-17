@@ -13,7 +13,7 @@ data class CardDTOResponse(
 @Serializable
 data class CardDto(
     val id :Int,
-    val name : Int,
+    val name : String,
     val type : String,
     val desc :String,
     val race : String="",
