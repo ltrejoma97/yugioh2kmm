@@ -9,11 +9,19 @@
 import SwiftUI
 
 struct HelloWorldScreen: View {
+    @State var isActive: Bool = false
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+       
+        NavigationView{
+            NavigationLink(destination: WorldScreen(), isActive: $isActive){
+                Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+                Button(action: {isActive = true}, label: {EmptyView()})
+            }
+        }
     }
 }
 
-#Preview {
-    HelloWorldScreen()
-}
+
+//#Preview {
+//    HelloWorldScreen(isActive: <#Binding<Bool>#>)
+//}

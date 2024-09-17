@@ -112,12 +112,12 @@
 			path = application;
 			sourceTree = "<group>";
 		};
-		606BD5002C7CF1BF005AF5B4 /* domain */ = {
+		606BD5002C7CF1BF005AF5B4 /* model */ = {
 			isa = PBXGroup;
 			children = (
 				606BD5012C7CF366005AF5B4 /* YugiohCardsInfo.swift */,
 			);
-			path = domain;
+			path = model;
 			sourceTree = "<group>";
 		};
 		607436AE2C910D4600C46AC1 /* uiObjects */ = {
@@ -150,7 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				058557D7273AAEEB004C7B11 /* Preview Content */,
-				606BD5002C7CF1BF005AF5B4 /* domain */,
+				606BD5002C7CF1BF005AF5B4 /* model */,
 				606BD4FE2C7CF0A6005AF5B4 /* presentation */,
 				7555FF8C242A565B00829871 /* Info.plist */,
 			);
