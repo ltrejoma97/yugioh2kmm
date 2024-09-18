@@ -9,7 +9,6 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonBuilder
 import kotlinx.serialization.json.JsonConfiguration
 import org.example.yugiohkmmtest.domain.DTO.CardDTOResponse
-import io.ktor.client.engine.cio.*
 
 
 interface Endpoint {
