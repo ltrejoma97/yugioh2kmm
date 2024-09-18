@@ -18,13 +18,35 @@ extension CardsListScreen{
     @State var isImageActive: Bool = false
         
     private let getBlueEyesDragonCardsUseCaseHelper = GetBlueEyesDragonCardsUseCaseHelper.init()
+    private let testRealHelper = TestRealmHelper()
         
     @Published private(set) var blueEyesDragonsCards: CardDTOResponse = CardDTOResponse(data:[])
+    @Published private(set) var writePaddintong: Void = ()
+    @Published private(set) var readPaddintong: String = ""
 
         func getBlueEyesDragons() async{
             do{
                 let getBlueEyesDragonsCardsHelper = try await getBlueEyesDragonCardsUseCaseHelper.callUseCase()
                 self.blueEyesDragonsCards =  getBlueEyesDragonsCardsHelper
+            }catch{
+                print(error.localizedDescription)
+            }
+        }
+        
+        func writeTestRealmHlelper() async{
+            do{
+                let writeTestRealmHelper: Void = try await testRealHelper.writePaddingtong()
+                self.writePaddintong = writeTestRealmHelper
+            }catch{
+                print(error.localizedDescription)
+            }
+        }
+        
+        func readTestRealmHlelper() async{
+            do{
+                let readTestRealmHelper: String = try await testRealHelper.readPaddingtong()
+                self.readPaddintong = readTestRealmHelper
+                print(readPaddintong)
             }catch{
                 print(error.localizedDescription)
             }

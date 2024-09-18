@@ -17,7 +17,7 @@ struct CardsListScreen: View {
     NavigationView{
         ScrollView{
             VStack(spacing: 10){
-                    Text("CARD LIST")
+                Text(viewModel.readPaddintong)
                         .font(.title)
                         .foregroundColor(.black)
                         .bold()
@@ -31,7 +31,10 @@ struct CardsListScreen: View {
                                             card_images: cards.card_images)
                         }
                     }
-                }.task { await viewModel.getBlueEyesDragons() }
+            }.task { await viewModel.getBlueEyesDragons()
+                
+                await viewModel.readTestRealmHlelper()
+            }
         }
     }
     }
