@@ -36,9 +36,7 @@ struct CardsListScreen: View {
                 }
             }
             .task { await viewModel.getBlueEyesDragons()
-                
-                
-                await viewModel.readTestRealmHlelper()
+                    await viewModel.readTestRealmHlelper()
             }
         }.padding(.horizontal, 10)
     }
@@ -49,23 +47,25 @@ struct CardsListScreen: View {
         var viewModel: CardsListViewModel
         var name: String
         var card_images: [CardImages]
+        @State var isActive: Bool = false
         
         var body: some View {
-            Button(action: {viewModel.isImageActive = true}, label: {
+            NavigationLink(destination: WorldScreen(), isActive: $isActive){
+                Button(action: {isActive = true}, label: {
                     
                     if(card_images.count > 1){
-                    
-                            VStack(spacing: 0) {
-                                Text("\(name)")
-                                    .font(.custom("Courier" ,size: 8))
-                                    .foregroundColor(Color.black)
-                                    .lineLimit(3)
-                                KFImage(URL(string: card_images[0].image_url))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 110, height: 190
-                                    )
-                            }.padding(.horizontal, 10)
+                        
+                        VStack(spacing: 0) {
+                            Text("\(name)")
+                                .font(.custom("Courier" ,size: 8))
+                                .foregroundColor(Color.black)
+                                .lineLimit(3)
+                            KFImage(URL(string: card_images[0].image_url))
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 110, height: 190
+                                )
+                        }.padding(.horizontal, 10)
                         
                     }else{
                         VStack(spacing: 0) {
@@ -82,9 +82,10 @@ struct CardsListScreen: View {
                                     .frame(width: 110, height: 190
                                     )
                             }
-                    }.padding(.horizontal, 10)
-                }
-            })
+                        }.padding(.horizontal, 10)
+                    }
+                })
+            }
         }
     }
 }
