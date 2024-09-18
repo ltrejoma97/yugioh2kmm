@@ -27,8 +27,8 @@ struct ListScreen: View {
                     .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                     .padding(.top)
                 
+
                 LazyVGrid(columns: gridForm, spacing: 8){
-                    
                     ForEach(viewModel.yugiohCardsInfo, id: \.self){
                         cards in
                         
