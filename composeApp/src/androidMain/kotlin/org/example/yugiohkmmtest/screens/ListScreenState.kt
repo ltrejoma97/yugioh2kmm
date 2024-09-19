@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -25,13 +26,13 @@ import org.koin.androidx.compose.get
 
 @Composable
 fun ListScreenState(uiState: CardsUiState) {
-    val listScreenViewModel : ListScreenViewModel = ListScreenViewModel(get())
-    listScreenViewModel.getAllCards()
+    //val listScreenViewModel : ListScreenViewModel = ListScreenViewModel(get())
+    //listScreenViewModel.getAllCards()
     LazyColumn {
-        item { Text(text = listScreenViewModel.uiState.responseCards) }
-//        items(uiState.cardsList) {
-//            CardElemento(cardItem = it)
-//        }
+        //item { Text(text = listScreenViewModel.uiState.responseCards) }
+        items(uiState.cardsList) {
+            CardElemento(cardItem = it)
+        }
     }
 }
 

@@ -2,6 +2,7 @@ package org.example.yugiohkmmtest.domain
 
 import org.example.yugiohkmmtest.data.Endpoint
 import org.example.yugiohkmmtest.domain.DTO.CardDTOResponse
+import org.example.yugiohkmmtest.domain.DTO.CardDto
 
 
 interface GetBlueEyesDragonCardsUseCase {
