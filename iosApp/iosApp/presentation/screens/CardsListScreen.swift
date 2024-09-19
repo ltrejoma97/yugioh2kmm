@@ -30,7 +30,9 @@ struct CardsListScreen: View {
                         ForEach(viewModel.blueEyesDragonsCards.data, id: \.self){ cards in
                             CardsListDetail(viewModel: viewModel,
                                             name: cards.name,
-                                            card_images: cards.card_images)
+                                            card_images: cards.card_images,
+                                            atk: cards.atk ,
+                                            def: cards.def)
                         }
                     }
                 }
@@ -47,10 +49,12 @@ struct CardsListScreen: View {
         var viewModel: CardsListViewModel
         var name: String
         var card_images: [CardImages]
+        var atk: Int32
+        var def: Int32
         @State var isActive: Bool = false
         
         var body: some View {
-            NavigationLink(destination: WorldScreen(), isActive: $isActive){
+            NavigationLink(destination: WorldScreen(name: name, card_images: card_images, atk: atk, def: def), isActive: $isActive){
                 Button(action: {isActive = true}, label: {
                     
                     if(card_images.count > 1){
