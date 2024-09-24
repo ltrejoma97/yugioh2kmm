@@ -53,6 +53,6 @@ struct WorldScreen: View {
 }
 
 //#Preview {
-//    WorldScreen()
+//    WorldScreen(CardDto.copy())
 //}
 

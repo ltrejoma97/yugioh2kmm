@@ -26,12 +26,12 @@ struct CardsListScreen: View {
                         .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                         .padding([.top, .bottom])
                 LazyVGrid(columns: gridForm, spacing: 10){
-                    if(!viewModel.blueEyesDragonsCards.data.isEmpty){
-                        ForEach(viewModel.blueEyesDragonsCards.data, id: \.self){ cardDescription in
-                            CardsListDetail(viewModel: viewModel,
-                                            card: cardDescription)
-                        }
-                    }
+//                    if(!$viewModel.blueEyesDragonsCards.){
+//                        ForEach(viewModel.blueEyesDragonsCards.data, id: \.self){ cardDescription in
+//                            CardsListDetail(viewModel: viewModel,
+//                                            card: cardDescription)
+//                        }
+//                    }
                 }
             }
             .task { await viewModel.getBlueEyesDragons()

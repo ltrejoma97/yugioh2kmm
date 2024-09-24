@@ -20,18 +20,21 @@ extension CardsListScreen{
     private let getBlueEyesDragonCardsUseCaseHelper = GetBlueEyesDragonCardsUseCaseHelper.init()
     private let testRealHelper = TestRealmHelper()
         
-    @Published private(set) var blueEyesDragonsCards: CardDTOResponse = CardDTOResponse(data:[])
+//    @Published private(set) var blueEyesDragonsCards: CardDTOResponse = CardDTOResponse(data:[], error: <#String#>)
+    @Published var blueEyesDragonsCards: NSArray = NSArray(array: [])
     @Published private(set) var writePaddintong: Void = ()
     @Published private(set) var readPaddintong: String = ""
+        
 
-        func getBlueEyesDragons() async{
+        func getBlueEyesDragons() async -> NSArray  {     
             do{
                 let getBlueEyesDragonsCardsHelper = try await getBlueEyesDragonCardsUseCaseHelper.callUseCase()
-                self.blueEyesDragonsCards =  getBlueEyesDragonsCardsHelper
+                blueEyesDragonsCards = getBlueEyesDragonsCardsHelper.data ?? NSArray(array: [])
                 print(blueEyesDragonsCards)
             }catch{
                 print(error.localizedDescription)
             }
+            return blueEyesDragonsCards
         }
         
         func writeTestRealmHlelper() async{
