@@ -31,10 +31,10 @@ class MainViewModel(
     fun getCards() {
         viewModelScope.launch {
             val response = getGetBlueEyesDragonCardsUseCase.invoke()
-            val cardList = response.data.map { it.toDomainCardList() }
-            _uiState.update { state ->
-                state.copy(cardsList = cardList)
-            }
+//            val cardList = response.data.map { it.toDomainCardList() }
+//            _uiState.update { state ->
+//                state.copy(cardsList = cardList)
+//            }
         }
     }
 
