@@ -12,6 +12,10 @@ class GetBlueEyesDragonCardsUseCaseHelper : KoinComponent {
     private val useCase : GetBlueEyesDragonCardsUseCase by inject()
     @Throws(Exception::class) suspend fun callUseCase() : UseCaseResponse<List<YugiohCard>> = useCase.invoke()
     fun testChannel(): String = useCase.testChannel()
+
+    @Throws(Exception::class) suspend fun callFlowFromUseCase() = useCase.testFlow()
+
+
 }
 
 class TestRealmHelper : KoinComponent{

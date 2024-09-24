@@ -2,6 +2,10 @@ package org.example.yugiohkmmtest.domain
 
 
 
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
 import org.example.yugiohkmmtest.data.repository.CardsRepository
 import org.example.yugiohkmmtest.domain.modelObjexts.YugiohCard
 import org.example.yugiohkmmtest.domain.modelObjexts.mapToUiListCard
@@ -13,6 +17,8 @@ import org.example.yugiohkmmtest.domain.useCases.UseCaseResponse
 interface GetBlueEyesDragonCardsUseCase {
     @Throws(Exception::class) suspend fun invoke(): UseCaseResponse<List<YugiohCard>>
     fun testChannel() : String
+
+    fun testFlow() : Flow<String>
 }
 
 class GetBlueEyesDragonCardsUseCaseImp(val repository: CardsRepository) : GetBlueEyesDragonCardsUseCase{
@@ -29,6 +35,13 @@ class GetBlueEyesDragonCardsUseCaseImp(val repository: CardsRepository) : GetBlu
     override fun testChannel(): String {
 //       return endpoint.testChannel()
         return "Test 18/09/2024"
+    }
+
+    override fun testFlow(): Flow<String> {
+        return flow{
+            delay(1000)
+            emit("Hola Mundo")
+        }
     }
 
 
