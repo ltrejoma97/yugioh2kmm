@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import moe.tlaster.precompose.viewmodel.ViewModel
@@ -35,6 +36,14 @@ class MainViewModel(
 //            _uiState.update { state ->
 //                state.copy(cardsList = cardList)
 //            }
+        }
+
+        viewModelScope.launch {
+            getGetBlueEyesDragonCardsUseCase.testFlow().onStart {
+                println("Comenzando El Flow")
+            }.collect{
+                println("Colectando el flow $it")
+            }
         }
     }
 
