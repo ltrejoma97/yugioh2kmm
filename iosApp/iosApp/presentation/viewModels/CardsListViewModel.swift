@@ -25,13 +25,24 @@ extension CardsListScreen{
     @Published private(set) var readPaddintong: String = ""
 
         func getBlueEyesDragons() async{
+        
             do{
+                
+                // en la linea 32 se genera una llamada al helper del caso de uso que va a retornar un "Flow" que puede ser manejado en swift esta encapsulado en la clase FlowWrapper
+                let flowWrapper = getBlueEyesDragonCardsUseCaseHelper.testFlow()
+                //la clase Flow Wrapper tiene una funcion que permite observar el flow (llamada al .watch) para que vayan llegando los valores
+                flowWrapper.watch { value in
+                    print("Received value: \(value)")
+                }
+                
                 let getBlueEyesDragonsCardsHelper = try await getBlueEyesDragonCardsUseCaseHelper.callUseCase()
                 self.blueEyesDragonsCards =  getBlueEyesDragonsCardsHelper
             }catch{
                 print(error.localizedDescription)
             }
         }
+        
+
         
         func writeTestRealmHlelper() async{
             do{

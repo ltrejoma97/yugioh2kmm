@@ -21,6 +21,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             val mainViewModel : MainViewModel= MainViewModel(get(), get(),get())
             mainViewModel.testPersistenceRead()
+            mainViewModel.testFlow()
             App()
             //MainScreen(viewModel.uiState.value)
         }

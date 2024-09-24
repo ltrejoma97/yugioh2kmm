@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import moe.tlaster.precompose.viewmodel.ViewModel
@@ -41,6 +42,16 @@ class MainViewModel(private val getGetBlueEyesDragonCardsUseCase: GetBlueEyesDra
     fun testPersistenceRead(){
         viewModelScope.launch(Dispatchers.IO) {
             realmTestUseCase.readTestChannel()
+        }
+    }
+
+    fun testFlow() {
+        viewModelScope.launch {
+            getGetBlueEyesDragonCardsUseCase.testFlow().onStart {
+                println("iniciando el flow")
+            }.collect{
+                println(it)
+            }
         }
     }
 
