@@ -1,13 +1,16 @@
 package org.example.yugiohkmmtest.domain
 
+import org.example.yugiohkmmtest.data.LocalDataSource.DatabaseCard
 import org.example.yugiohkmmtest.domain.DTO.CardDTOResponse
+import org.example.yugiohkmmtest.domain.modelObjexts.YugiohCard
+import org.example.yugiohkmmtest.domain.useCases.BaseUseCaseResponse
 import org.example.yugiohkmmtest.domain.useCases.RealmTestUseCase
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
 class GetBlueEyesDragonCardsUseCaseHelper : KoinComponent {
     private val useCase : GetBlueEyesDragonCardsUseCase by inject()
-    @Throws(Exception::class) suspend fun callUseCase() : CardDTOResponse = useCase.invoke()
+    @Throws(Exception::class) suspend fun callUseCase() : BaseUseCaseResponse<List<YugiohCard>> = useCase.invoke()
     fun testChannel(): String = useCase.testChannel()
 }
 

@@ -36,12 +36,16 @@ class EndpointImp(): Endpoint {
     }
 
     override suspend fun getblueDragon(): CardDTOResponse {
-        val response :String = client.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=Blue-Eyes").body<String>()?:"Error avisale a luis"
-        //INTERNAL CONSTRUCTOR
-        val json = Json {ignoreUnknownKeys = true}
-        json.configuration.ignoreUnknownKeys
-        val obj = json.decodeFromString<CardDTOResponse>(response)
-        return obj
+        kotlin.runCatching {
+            val response :String = client.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=Blue-Eyes").body<String>()?:"Error avisale a luis"
+            //INTERNAL CONSTRUCTOR
+            val json = Json {ignoreUnknownKeys = true}
+            json.configuration.ignoreUnknownKeys
+            val obj = json.decodeFromString<CardDTOResponse>(response)
+            return obj
+        }.getOrElse {
+           throw it
+        }
     }
 
 

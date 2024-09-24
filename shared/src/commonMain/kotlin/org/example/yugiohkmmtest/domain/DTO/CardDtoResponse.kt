@@ -2,12 +2,49 @@ package org.example.yugiohkmmtest.domain.DTO
 
 import io.ktor.websocket.FrameType
 import kotlinx.serialization.Serializable
+import org.example.yugiohkmmtest.data.LocalDataSource.DatabaseCard
+import org.example.yugiohkmmtest.data.LocalDataSource.MONSTER_CARD
+import org.example.yugiohkmmtest.data.LocalDataSource.TRAP_CARD
+import org.example.yugiohkmmtest.data.TypeOfCard
 
 
 @Serializable
 data class CardDTOResponse(
-    val data: List<CardDto>,
-    )
+    val data: List<CardDto> = listOf() ,
+    val error : String="", ){
+
+    fun convertTheDataToDatabaseModel(): Array<DatabaseCard> {
+        kotlin.runCatching {
+            if (data.isNotEmpty()){
+                val databaseElements :MutableList<DatabaseCard> = mutableListOf()
+                this.data.forEach {
+                    val mappedToDatabase = DatabaseCard().apply {
+                        id = it.id
+                        name = it.name
+                        humanReadableName = it.humanReadableCardType
+                        desc = it.desc
+                        race = it.race
+                        ygoprodeck_url = it.ygoprodeck_url
+                        archetype = it.archetype
+                        atk = it.atk
+                        def = it.def
+                        frameType = it.frameType
+                        level = it.level
+                        attribute = it.attribute
+                        imgUrl = it.card_images.first().image_url
+                        imgUrlSmall = it.card_images.first().image_url_small
+                    }
+                    databaseElements.add(mappedToDatabase)
+                }
+                return databaseElements.toTypedArray()
+            }
+            return emptyArray()
+        }.getOrElse { throw it }
+
+    }
+
+
+}
 
 
 @Serializable

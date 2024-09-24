@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             val mainViewModel : MainViewModel= MainViewModel(get(), get(),get())
-            mainViewModel.testPersistenceRead()
+            mainViewModel.getCards()
             App()
             //MainScreen(viewModel.uiState.value)
         }
