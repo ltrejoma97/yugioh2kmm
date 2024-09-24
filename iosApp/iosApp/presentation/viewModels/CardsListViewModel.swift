@@ -28,6 +28,7 @@ extension CardsListScreen{
             do{
                 let getBlueEyesDragonsCardsHelper = try await getBlueEyesDragonCardsUseCaseHelper.callUseCase()
                 self.blueEyesDragonsCards =  getBlueEyesDragonsCardsHelper
+                print(blueEyesDragonsCards)
             }catch{
                 print(error.localizedDescription)
             }

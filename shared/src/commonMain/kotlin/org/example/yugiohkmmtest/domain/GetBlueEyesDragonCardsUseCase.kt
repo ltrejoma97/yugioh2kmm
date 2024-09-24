@@ -1,10 +1,10 @@
 package org.example.yugiohkmmtest.domain
 
 
+
 import org.example.yugiohkmmtest.data.repository.CardsRepository
 import org.example.yugiohkmmtest.domain.modelObjexts.YugiohCard
 import org.example.yugiohkmmtest.domain.modelObjexts.mapToUiListCard
-import org.example.yugiohkmmtest.domain.useCases.BaseUseCase
 import org.example.yugiohkmmtest.domain.useCases.BaseUseCaseResponse
 
 
