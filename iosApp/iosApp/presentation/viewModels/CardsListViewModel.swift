@@ -24,6 +24,7 @@ extension CardsListScreen{
     @Published var blueEyesDragonsCards: NSArray = NSArray(array: [])
     @Published private(set) var writePaddintong: Void = ()
     @Published private(set) var readPaddintong: String = ""
+    @Published private(set) var blueEyesDragonsCardsArray: [YugiohCard] = []
         
 
         func getBlueEyesDragons() async -> NSArray  {     
@@ -56,15 +57,18 @@ extension CardsListScreen{
             }
         }
         
-        func convertNSArrayInList() async{
-            if let array = await getBlueEyesDragons() as? [YugiohCard]{
+        func convertNSArrayInArray(){
+            if let array =  blueEyesDragonsCards as? [YugiohCard]{
                 array.forEach{ element in
+                    blueEyesDragonsCardsArray.append(element)
                     print(element)
                 }
             }else{
                 print("No se pudo convertir NSArray")
             }
         }
+        
+        
         
         func updateUiObject(yugiohCardsUiObject: YugiohCardsUiObject){
             uiObject = yugiohCardsUiObject
