@@ -20,29 +20,31 @@ extension CardsListScreen{
     private let getBlueEyesDragonCardsUseCaseHelper = GetBlueEyesDragonCardsUseCaseHelper.init()
     private let testRealHelper = TestRealmHelper()
         
-    @Published private(set) var blueEyesDragonsCards: CardDTOResponse = CardDTOResponse(data:[])
+//    @Published private(set) var blueEyesDragonsCards: CardDTOResponse = CardDTOResponse(data:[], error: <#String#>)
+    @Published var blueEyesDragonsCards: NSArray = NSArray(array: [])
     @Published private(set) var writePaddintong: Void = ()
     @Published private(set) var readPaddintong: String = ""
+    @Published private(set) var blueEyesDragonsCardsArray: [YugiohCard] = []
 
-        func getBlueEyesDragons() async{
-        
+
+        func getBlueEyesDragons() async -> NSArray  {
             do{
-                
+
                 // en la linea 32 se genera una llamada al helper del caso de uso que va a retornar un "Flow" que puede ser manejado en swift esta encapsulado en la clase FlowWrapper
                 let flowWrapper = getBlueEyesDragonCardsUseCaseHelper.testFlow()
                 //la clase Flow Wrapper tiene una funcion que permite observar el flow (llamada al .watch) para que vayan llegando los valores
                 flowWrapper.watch { value in
                     print("Received value: \(value)")
                 }
-                
+
                 let getBlueEyesDragonsCardsHelper = try await getBlueEyesDragonCardsUseCaseHelper.callUseCase()
-                self.blueEyesDragonsCards =  getBlueEyesDragonsCardsHelper
+                blueEyesDragonsCards = getBlueEyesDragonsCardsHelper.data ?? NSArray(array: [])
+                print(blueEyesDragonsCards)
             }catch{
                 print(error.localizedDescription)
             }
+            return blueEyesDragonsCards
         }
-        
-
         
         func writeTestRealmHlelper() async{
             do{
@@ -63,6 +65,19 @@ extension CardsListScreen{
             }
         }
         
+        func convertNSArrayInArray(){
+            if let array =  blueEyesDragonsCards as? [YugiohCard]{
+                array.forEach{ element in
+                    blueEyesDragonsCardsArray.append(element)
+                    print(element)
+                }
+            }else{
+                print("No se pudo convertir NSArray")
+            }
+        }
+
+
+
         func updateUiObject(yugiohCardsUiObject: YugiohCardsUiObject){
             uiObject = yugiohCardsUiObject
         }

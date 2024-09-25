@@ -7,7 +7,5 @@ data class CardsModel(
 data class CardsList(
     val id: Int,
     val name: String,
-    val type: String,
-    val atk: String,
-    val def: String
+    val type: String
 )
