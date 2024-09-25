@@ -17,19 +17,24 @@ struct WorldScreen: View {
     
 //        VStack {
  
-                VStack(spacing: 0) {
-                    Text("\(card.name)")
-                      .font(.custom("Courier" ,size: 10))
-                      .foregroundColor(Color.black)
-                      .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity,maxHeight: 20 ,alignment: .center)
-                      .lineLimit(3)
-                            KFImage(URL(string: card.imgUrl))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 110, height: 190
-                                    )
-                            
-                        }.padding(.horizontal, 10)
+        VStack(spacing: 0) {
+            Text("\(card.name)")
+             .font(.custom("Courier" ,size: 20))
+             .foregroundColor(Color.black)
+             .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity,maxHeight: 20 ,alignment: .center)
+             .lineLimit(3)
+                    
+     
+            KFImage(URL(string: card.imgUrl))
+              .resizable()
+              .scaledToFit()
+              .frame(width: 340, height: 430)
+            
+            
+            
+            }.padding(.horizontal, 10)
+        
+        
 //            if(card.card_images.count > 1){
                 
 //                VStack(spacing: 0) {
