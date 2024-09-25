@@ -56,6 +56,16 @@ extension CardsListScreen{
             }
         }
         
+        func convertNSArrayInList() async{
+            if let array = await getBlueEyesDragons() as? [YugiohCard]{
+                array.forEach{ element in
+                    print(element)
+                }
+            }else{
+                print("No se pudo convertir NSArray")
+            }
+        }
+        
         func updateUiObject(yugiohCardsUiObject: YugiohCardsUiObject){
             uiObject = yugiohCardsUiObject
         }
