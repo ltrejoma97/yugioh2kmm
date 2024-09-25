@@ -28,11 +28,51 @@ struct WorldScreen: View {
             KFImage(URL(string: card.imgUrl))
               .resizable()
               .scaledToFit()
-              .frame(width: 340, height: 430)
+              .frame(width: 300, height: 400)
             
+            ZStack{
+                RoundedRectangle(cornerRadius: 8)
+                    .fill(Color("yugioh_brown"))
+                    .frame(width: 340)
+                
+                Image("yugioh_card")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity,alignment: .trailing)
             
+                
+                VStack{
+                    Text("Atk: \(card.atk)")
+                        .font(.custom("Courier", size: 20))
+                        .foregroundColor(Color.white)
+                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical, 4)
+                    Text("Def: \(card.def)")
+                        .font(.custom("Courier", size: 20))
+                        .foregroundColor(Color.white)
+                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical, 4)
+                    Text("Level: \(card.level)")
+                        .font(.custom("Courier", size: 20))
+                        .foregroundColor(Color.white)
+                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical, 4)
+                    Text("Race: \(card.race)")
+                        .font(.custom("Courier", size: 20))
+                        .foregroundColor(Color.white)
+                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical, 4)
+                    Text("Type: \(card.type)")
+                        .font(.custom("Courier", size: 20))
+                        .foregroundColor(Color.white)
+                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
+                        .padding(.vertical, 4)
+                }.padding(.horizontal, 20)
+    
+            }.frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .padding(.vertical, 10)
             
-            }.padding(.horizontal, 10)
+        }.padding(.horizontal, 20)
         
         
 //            if(card.card_images.count > 1){

@@ -66,7 +66,6 @@ struct CardsListScreen: View {
                                     )
                             
                         }.padding(.horizontal, 10)
-                    
                 })
             }
         }
