@@ -19,12 +19,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import moe.tlaster.precompose.PreComposeApp
-import org.example.yugiohkmmtest.viewModel.CardsUiState
-import org.example.yugiohkmmtest.viewModel.ListScreenViewModel
+import org.example.yugiohkmmtest.viewModel.MainViewModel
 
 
 @Composable
-fun MainScreen(uiState: CardsUiState) {
+fun MainScreen(
+    vm: MainViewModel,
+    //onCardClick: (YugiohCard) -> Unit
+) {
     PreComposeApp {
         val navItemList = listOf(
             NavItem(label = "List", icon = Icons.Default.List),
@@ -53,7 +55,10 @@ fun MainScreen(uiState: CardsUiState) {
                 }
 
             }) { innerPadding ->
-            ContentScreen(modifier = Modifier.padding(innerPadding), selectedIndex, uiState)
+            ContentScreen(
+                modifier = Modifier.padding(innerPadding),
+                selectedIndex = selectedIndex,
+                vm =vm)
         }
     }
 }
@@ -63,11 +68,13 @@ fun MainScreen(uiState: CardsUiState) {
 fun ContentScreen(
     modifier: Modifier,
     selectedIndex: Int,
-    uiState: CardsUiState,
+    //uiState: CardsUiState,
+    //onCardClick: (YugiohCard) -> Unit,
+    vm: MainViewModel
 
 ) {
     when (selectedIndex) {
-        0 -> ListScreenState(uiState)
+        0 -> ListCards(vm)
         1 -> ShowingMap()
         2 -> Hello()
     }

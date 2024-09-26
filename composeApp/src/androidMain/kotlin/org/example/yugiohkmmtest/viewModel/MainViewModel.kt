@@ -1,6 +1,9 @@
 package org.example.yugiohkmmtest.viewModel
 
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -13,11 +16,13 @@ import moe.tlaster.precompose.viewmodel.viewModelScope
 import org.example.yugiohkmmtest.domain.CardRepository
 import org.example.yugiohkmmtest.domain.DTO.CardDto
 import org.example.yugiohkmmtest.domain.GetBlueEyesDragonCardsUseCase
+import org.example.yugiohkmmtest.domain.modelObjexts.YugiohCard
 import org.example.yugiohkmmtest.domain.useCases.RealmTestUseCase
+import org.example.yugiohkmmtest.domain.useCases.UseCaseResponse
 import org.example.yugiohkmmtest.model.CardsList
 
 data class CardsUiState(
-    val cardsList: List<CardsList> = emptyList(),
+    val cardsList: List<YugiohCard> = emptyList(),
 )
 
 class MainViewModel(
@@ -26,16 +31,19 @@ class MainViewModel(
     private val realmTestUseCase: RealmTestUseCase,
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow(CardsUiState())
-    val uiState = _uiState.asStateFlow()
+//    private val _uiState = MutableStateFlow(CardsUiState())
+//    val uiState = _uiState.asStateFlow()
+
+    var uiState by mutableStateOf(CardsUiState())
+        private set
 
     fun getCards() {
         viewModelScope.launch {
             val response = getGetBlueEyesDragonCardsUseCase.invoke()
-//            val cardList = response.data.map { it.toDomainCardList() }
-//            _uiState.update { state ->
-//                state.copy(cardsList = cardList)
-//            }
+            uiState = response.data?.let {
+                CardsUiState(
+                    cardsList = it)
+            } ?: CardsUiState()
         }
 
         viewModelScope.launch {
@@ -67,13 +75,13 @@ class MainViewModel(
         getCards()
     }
 
-    private fun getAllCards() {
-        viewModelScope.launch {
-            _uiState.update { state ->
-                state.copy()
-            }
-        }
-    }
+//    private fun getAllCards() {
+//        viewModelScope.launch {
+//            _uiState.update { state ->
+//                state.copy()
+//            }
+//        }
+//    }
     private fun CardDto.toDomainCardList()= CardsList(
         id = this.id,
         name = this.name,

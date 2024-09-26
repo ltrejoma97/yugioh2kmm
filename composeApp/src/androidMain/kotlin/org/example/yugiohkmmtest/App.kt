@@ -13,13 +13,10 @@ import org.koin.androidx.compose.get
 
 @Composable
 @Preview
-fun App() {
-
+fun App(mainViewModel: MainViewModel) {
     MaterialTheme {
-
-
         PreComposeApp {
-            val viewModel = MainViewModel(get(), get(), get())
+            //val viewModel = MainViewModel(get(), get(), get())
 
 
 
@@ -27,8 +24,9 @@ fun App() {
 //            val viewModel = viewModel(modelClass = MainViewModel::class) {
 //              MainViewModel(CardRepoImpl(CardManager))
 //            }
-            val uiState by viewModel.uiState.collectAsStateWithLifecycle()
-            MainScreen(uiState = uiState)
+            //val uiState by viewModel.uiState.collectAsStateWithLifecycle()
+            //val uiState = viewModel.uiState
+            MainScreen(vm = mainViewModel)
 
         }
     }
