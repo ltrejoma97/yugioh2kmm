@@ -6,6 +6,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
 import androidx.compose.ui.tooling.preview.Preview
 
 import org.example.yugiohkmmtest.viewModel.MainViewModel
@@ -19,11 +21,14 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            val mainViewModel : MainViewModel= MainViewModel(get(), get(),get())
-            mainViewModel.testPersistenceRead()
-            mainViewModel.testFlow()
-            mainViewModel.getCards()
-            App()
+            val mainViewModel : MainViewModel= remember {
+                MainViewModel(get(), get(), get())
+            }
+            LaunchedEffect(Unit){
+                mainViewModel.getCards()
+            }
+
+            App(mainViewModel)
             //MainScreen(viewModel.uiState.value)
         }
     }

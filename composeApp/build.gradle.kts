@@ -54,6 +54,9 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             implementation(projects.shared)
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor)
+            implementation(libs.androidx.navigation.compose)
 
             //Navigation PreCompose
             api("moe.tlaster:precompose:1.5.10")
