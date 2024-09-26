@@ -55,7 +55,7 @@ data class CardDto(
     val desc :String,
     val race : String="",
     val ygoprodeck_url : String,
-    val archetype : String,
+    val archetype : String="",
     val frameType: String,
     val humanReadableCardType : String,
     val atk : Int=0,

@@ -53,8 +53,6 @@ class GetBlueEyesDragonCardsUseCaseImp(val repository: CardsRepository) : GetBlu
             emit("RESULTADO DEL FLOW")
         }
     }
-
-
 }
 
 

@@ -6,9 +6,12 @@ import org.example.yugiohkmmtest.data.Endpoint
 import org.example.yugiohkmmtest.data.LocalDataSource.DatabaseCard
 import org.example.yugiohkmmtest.data.LocalDataSource.RealmDatabase
 import org.example.yugiohkmmtest.domain.DTO.CardDTOResponse
+import org.example.yugiohkmmtest.domain.modelObjexts.YugiohCard
+import org.example.yugiohkmmtest.domain.modelObjexts.mapToUiListCard
 
 interface CardsRepository {
     suspend fun getBlueEyesCards(): List<DatabaseCard>
+    suspend fun getClassicCards(): Flow<List<YugiohCard>>
 }
 
 class CardsRepositoryImp(val endpoint: Endpoint, val realmDatabase: RealmDatabase) : CardsRepository{
@@ -24,7 +27,7 @@ class CardsRepositoryImp(val endpoint: Endpoint, val realmDatabase: RealmDatabas
 //        }
 
         kotlin.runCatching {
-            val response = endpoint.getblueDragon()
+            val response = endpoint.getClassicCards()
             realmDatabase.saveCards(response)
             val newData = realmDatabase.readCards()
 
@@ -33,5 +36,17 @@ class CardsRepositoryImp(val endpoint: Endpoint, val realmDatabase: RealmDatabas
             return realmDatabase.readCards()
         }
 
+    }
+
+    override suspend fun getClassicCards(): Flow<List<YugiohCard>> {
+
+        return flow {
+            val cachedCards = realmDatabase.readCards()
+            emit(cachedCards.mapToUiListCard())
+            val response = endpoint.getClassicCards()
+            realmDatabase.saveCards(response)
+            val newResponse = realmDatabase.readCards().mapToUiListCard()
+            emit(newResponse)
+        }
     }
 }

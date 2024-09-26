@@ -17,6 +17,7 @@ import org.example.yugiohkmmtest.domain.CardRepository
 import org.example.yugiohkmmtest.domain.DTO.CardDto
 import org.example.yugiohkmmtest.domain.GetBlueEyesDragonCardsUseCase
 import org.example.yugiohkmmtest.domain.modelObjexts.YugiohCard
+import org.example.yugiohkmmtest.domain.useCases.GetClassicCardsUseCase
 import org.example.yugiohkmmtest.domain.useCases.RealmTestUseCase
 import org.example.yugiohkmmtest.domain.useCases.UseCaseResponse
 import org.example.yugiohkmmtest.model.CardsList
@@ -27,7 +28,7 @@ data class CardsUiState(
 
 class MainViewModel(
     private val getGetBlueEyesDragonCardsUseCase: GetBlueEyesDragonCardsUseCase,
-    private val cardsRepository: CardRepository,
+    private val getClassicCardsUseCase: GetClassicCardsUseCase,
     private val realmTestUseCase: RealmTestUseCase,
 ) : ViewModel() {
 
@@ -38,26 +39,26 @@ class MainViewModel(
         private set
 
     fun getCards() {
-        viewModelScope.launch {
-            val response = getGetBlueEyesDragonCardsUseCase.invoke()
-            uiState = response.data?.let {
-                CardsUiState(
-                    cardsList = it)
-            } ?: CardsUiState()
-        }
+//        viewModelScope.launch {
+//            val response = getGetBlueEyesDragonCardsUseCase.invoke()
+//            uiState = response.data?.let {
+//                CardsUiState(
+//                    cardsList = it)
+//            } ?: CardsUiState()
+//        }
 
         viewModelScope.launch {
-            getGetBlueEyesDragonCardsUseCase.testFlow().onStart {
+            getClassicCardsUseCase.invoke().onStart {
                 println("Comenzando El Flow")
             }.collect{
-                println("Colectando el flow $it")
+                uiState= CardsUiState(
+                        cardsList = it) } ?: CardsUiState()
             }
-        }
     }
 
     fun testPersistenceWrite() {
         viewModelScope.launch(Dispatchers.IO) {
-            realmTestUseCase.writeTestChannel()
+           getClassicCardsUseCase.invoke()
         }
     }
 

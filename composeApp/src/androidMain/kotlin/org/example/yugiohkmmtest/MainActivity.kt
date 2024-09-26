@@ -25,6 +25,7 @@ class MainActivity : ComponentActivity() {
                 MainViewModel(get(), get(), get())
             }
             LaunchedEffect(Unit){
+                mainViewModel.testPersistenceWrite()
                 mainViewModel.getCards()
             }
 

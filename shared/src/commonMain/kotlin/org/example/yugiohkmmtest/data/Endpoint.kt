@@ -4,6 +4,8 @@ import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
+import io.ktor.client.request.parameter
+import io.ktor.client.request.url
 import io.ktor.client.statement.HttpResponse
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonBuilder
@@ -14,6 +16,7 @@ import org.example.yugiohkmmtest.domain.DTO.CardDTOResponse
 interface Endpoint {
      fun testChannel(): String
     suspend fun getblueDragon(): CardDTOResponse
+    suspend fun getClassicCards():CardDTOResponse
 
 }
 
@@ -26,6 +29,7 @@ class EndpointImp(): Endpoint {
             }
         }
     }
+    val json = Json {ignoreUnknownKeys = true}
 
     override fun testChannel(): String {
 //        val response: HttpResponse = client.get("https://ktor.io/")
@@ -39,12 +43,28 @@ class EndpointImp(): Endpoint {
         kotlin.runCatching {
             val response :String = client.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=Blue-Eyes").body<String>()?:"Error avisale a luis"
             //INTERNAL CONSTRUCTOR
-            val json = Json {ignoreUnknownKeys = true}
-            json.configuration.ignoreUnknownKeys
+
+
             val obj = json.decodeFromString<CardDTOResponse>(response)
             return obj
         }.getOrElse {
            throw it
+        }
+    }
+    // this is  an example using parameters and urls
+    override suspend fun getClassicCards(): CardDTOResponse {
+        kotlin.runCatching {
+            val response = client.get{
+                url("https://db.ygoprodeck.com/api/v7/cardinfo.php")
+                parameter("startdate","2000-01-01")
+                parameter("enddate","2002-08-23")
+                parameter("dateregion","tcg")
+            }.body<String>()?:"Error con las nuevas cartas avisale a luis "
+            val obj = json.decodeFromString<CardDTOResponse>(response)
+            return obj
+
+        }.getOrElse {
+            throw it
         }
     }
 
