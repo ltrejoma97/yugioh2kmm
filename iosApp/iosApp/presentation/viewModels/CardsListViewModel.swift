@@ -19,14 +19,16 @@ extension CardsListScreen{
         
     private let getBlueEyesDragonCardsUseCaseHelper = GetBlueEyesDragonCardsUseCaseHelper.init()
     private let testRealHelper = TestRealmHelper()
+    private let getClassicCardHelper = GetClassicCardsUseCaseHelper.init()
         
 //    @Published private(set) var blueEyesDragonsCards: CardDTOResponse = CardDTOResponse(data:[], error: <#String#>)
     @Published var blueEyesDragonsCards: NSArray = NSArray(array: [])
     @Published private(set) var writePaddintong: Void = ()
     @Published private(set) var readPaddintong: String = ""
     @Published private(set) var blueEyesDragonsCardsArray: [YugiohCard] = []
-    @Published private(set) var blueDragosCardsFlow: [String] = []
-
+    @Published private(set) var blueEyesDragonsCardsString: [String] = []
+    @Published private(set) var classicCardHelperFlow: [YugiohCard] = []
+    
 
         func getBlueEyesDragons() async -> NSArray  {
             do{
@@ -46,11 +48,30 @@ extension CardsListScreen{
             //la clase Flow Wrapper tiene una funcion que permite observar el flow (llamada al .watch) para que vayan llegando los valores
             flowWrapper.watch { value in
                 if let array =  value as? String{
-                    self.blueDragosCardsFlow.append(array)
+                    self.blueEyesDragonsCardsString.append(array)
                 }else{
                     print("No se pudo convertir NSArray")
                 }
                 print("Received value: \(String(describing: value))")
+            }
+
+        }
+        
+        func getFlowClassicCard() async{
+            do{
+                let flowWrapper = try await getClassicCardHelper.invoke()
+                flowWrapper.watch { value in
+                    if let array =  value as? [YugiohCard]{
+                        array.forEach{ element in
+                            self.classicCardHelperFlow.append(element)
+//                            print("HOLAAAAAAA: \(String(describing: array))")
+                        }
+                    }else{
+                        print("No se pudo convertir NSArray")
+                    }
+                }
+            }catch{
+                print(error.localizedDescription)
             }
 
         }

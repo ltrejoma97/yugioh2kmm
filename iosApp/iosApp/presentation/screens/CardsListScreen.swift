@@ -26,17 +26,19 @@ struct CardsListScreen: View {
                         .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                         .padding([.top, .bottom])
                 LazyVGrid(columns: gridForm, spacing: 10){
-                    if(!viewModel.blueEyesDragonsCardsArray.isEmpty){
-                        ForEach(viewModel.blueEyesDragonsCardsArray, id: \.self){ cardDescription in
+                    if(!viewModel.classicCardHelperFlow.isEmpty){
+                        ForEach(viewModel.classicCardHelperFlow, id: \.self){ cardDescription in
                             CardsListDetail(viewModel: viewModel,
                                             card: cardDescription)
                         }
                     }
                 }
             }
-            .task { await viewModel.getBlueEyesDragons()
+            .task { 
+//                await viewModel.getBlueEyesDragons()
                     await viewModel.readTestRealmHlelper()
-                    await viewModel.getFlowBlueEyesDragons()
+                    await viewModel.getFlowClassicCard()
+                    viewModel.getFlowBlueEyesDragons()
                     viewModel.convertNSArrayInArray()
             }
         }.padding(.horizontal, 10)
