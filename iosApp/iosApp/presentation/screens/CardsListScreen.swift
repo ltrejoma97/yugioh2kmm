@@ -36,6 +36,7 @@ struct CardsListScreen: View {
             }
             .task { await viewModel.getBlueEyesDragons()
                     await viewModel.readTestRealmHlelper()
+                    await viewModel.getFlowBlueEyesDragons()
                     viewModel.convertNSArrayInArray()
             }
         }.padding(.horizontal, 10)

@@ -25,17 +25,11 @@ extension CardsListScreen{
     @Published private(set) var writePaddintong: Void = ()
     @Published private(set) var readPaddintong: String = ""
     @Published private(set) var blueEyesDragonsCardsArray: [YugiohCard] = []
+    @Published private(set) var blueDragosCardsFlow: [String] = []
 
 
         func getBlueEyesDragons() async -> NSArray  {
             do{
-
-                // en la linea 32 se genera una llamada al helper del caso de uso que va a retornar un "Flow" que puede ser manejado en swift esta encapsulado en la clase FlowWrapper
-                let flowWrapper = getBlueEyesDragonCardsUseCaseHelper.testFlow()
-                //la clase Flow Wrapper tiene una funcion que permite observar el flow (llamada al .watch) para que vayan llegando los valores
-                flowWrapper.watch { value in
-                    print("Received value: \(value)")
-                }
 
                 let getBlueEyesDragonsCardsHelper = try await getBlueEyesDragonCardsUseCaseHelper.callUseCase()
                 blueEyesDragonsCards = getBlueEyesDragonsCardsHelper.data ?? NSArray(array: [])
@@ -44,6 +38,21 @@ extension CardsListScreen{
                 print(error.localizedDescription)
             }
             return blueEyesDragonsCards
+        }
+        
+        func getFlowBlueEyesDragons(){
+            // en la linea 32 se genera una llamada al helper del caso de uso que va a retornar un "Flow" que puede ser manejado en swift esta encapsulado en la clase FlowWrapper
+            let flowWrapper = getBlueEyesDragonCardsUseCaseHelper.testFlow()
+            //la clase Flow Wrapper tiene una funcion que permite observar el flow (llamada al .watch) para que vayan llegando los valores
+            flowWrapper.watch { value in
+                if let array =  value as? String{
+                    self.blueDragosCardsFlow.append(array)
+                }else{
+                    print("No se pudo convertir NSArray")
+                }
+                print("Received value: \(String(describing: value))")
+            }
+
         }
         
         func writeTestRealmHlelper() async{
