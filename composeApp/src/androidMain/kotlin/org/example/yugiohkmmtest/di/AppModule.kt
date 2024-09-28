@@ -14,5 +14,5 @@ fun appModule() = module {
     single<CardRepository> { CardRepoImpl(get()) }
 
     factory { MainViewModel(get(), get(), get()) }
-    single { ListScreenViewModel(get()) }
+    single { ListScreenViewModel(get(), get(), get()) }
 }

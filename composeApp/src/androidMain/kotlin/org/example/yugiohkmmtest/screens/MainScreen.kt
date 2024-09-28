@@ -19,13 +19,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import moe.tlaster.precompose.PreComposeApp
+import org.example.yugiohkmmtest.domain.modelObjexts.YugiohCard
 import org.example.yugiohkmmtest.viewModel.MainViewModel
 
 
 @Composable
 fun MainScreen(
     vm: MainViewModel,
-    //onCardClick: (YugiohCard) -> Unit
+    onCardClick: (YugiohCard) -> Unit
 ) {
     PreComposeApp {
         val navItemList = listOf(
@@ -58,7 +59,8 @@ fun MainScreen(
             ContentScreen(
                 modifier = Modifier.padding(innerPadding),
                 selectedIndex = selectedIndex,
-                vm =vm)
+                vm =vm,
+                onCardClick = onCardClick)
         }
     }
 }
@@ -69,7 +71,7 @@ fun ContentScreen(
     modifier: Modifier,
     selectedIndex: Int,
     //uiState: CardsUiState,
-    //onCardClick: (YugiohCard) -> Unit,
+    onCardClick: (YugiohCard) -> Unit,
     vm: MainViewModel
 
 ) {

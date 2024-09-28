@@ -6,14 +6,14 @@ import androidx.compose.runtime.*
 import moe.tlaster.precompose.PreComposeApp
 import moe.tlaster.precompose.flow.collectAsStateWithLifecycle
 import org.example.yugiohkmmtest.screens.MainScreen
+import org.example.yugiohkmmtest.screens.Navigation
 import org.example.yugiohkmmtest.viewModel.ListScreenViewModel
 import org.example.yugiohkmmtest.viewModel.MainViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.get
 
 @Composable
-@Preview
-fun App(mainViewModel: MainViewModel) {
+fun App(mainViewModel: MainViewModel, listScreenViewModel: ListScreenViewModel) {
     MaterialTheme {
         PreComposeApp {
             //val viewModel = MainViewModel(get(), get(), get())
@@ -26,7 +26,8 @@ fun App(mainViewModel: MainViewModel) {
 //            }
             //val uiState by viewModel.uiState.collectAsStateWithLifecycle()
             //val uiState = viewModel.uiState
-            MainScreen(vm = mainViewModel)
+            //MainScreen(vm = mainViewModel)
+            Navigation(mainViewModel, listScreenViewModel)
 
         }
     }

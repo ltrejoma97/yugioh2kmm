@@ -12,9 +12,13 @@ import org.example.yugiohkmmtest.domain.modelObjexts.mapToUiListCard
 interface CardsRepository {
     suspend fun getBlueEyesCards(): List<DatabaseCard>
     suspend fun getClassicCards(): Flow<List<YugiohCard>>
+    suspend fun getCardsById(id: Int): YugiohCard
 }
 
-class CardsRepositoryImp(val endpoint: Endpoint, val realmDatabase: RealmDatabase) : CardsRepository{
+class CardsRepositoryImp(
+    val endpoint: Endpoint,
+    val realmDatabase: RealmDatabase,
+) : CardsRepository {
 
     override suspend fun getBlueEyesCards(): List<DatabaseCard> {
 //        return flow {
@@ -48,5 +52,10 @@ class CardsRepositoryImp(val endpoint: Endpoint, val realmDatabase: RealmDatabas
             val newResponse = realmDatabase.readCards().mapToUiListCard()
             emit(newResponse)
         }
+    }
+
+
+    override suspend fun getCardsById(id: Int): YugiohCard {
+        return realmDatabase.readCards().mapToUiListCard().first { it.id == id }
     }
 }

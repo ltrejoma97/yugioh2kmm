@@ -7,35 +7,35 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import moe.tlaster.precompose.viewmodel.ViewModel
 import moe.tlaster.precompose.viewmodel.viewModelScope
+import org.example.yugiohkmmtest.data.repository.CardsRepository
 import org.example.yugiohkmmtest.domain.CardRepository
+import org.example.yugiohkmmtest.domain.GetBlueEyesDragonCardsUseCase
+import org.example.yugiohkmmtest.domain.modelObjexts.YugiohCard
+import org.example.yugiohkmmtest.domain.useCases.GetClassicCardsUseCase
 
-class ListScreenViewModel(private val cardRepository: CardRepository): ViewModel() {
+class ListScreenViewModel(
+    private val id: Int,
+    private val cardRepository: CardsRepository,
+    private val getGetBlueEyesDragonCardsUseCase: GetBlueEyesDragonCardsUseCase,
+    private val getClassicCardsUseCase: GetClassicCardsUseCase
 
-    var uiState : ListScreenUIState by mutableStateOf(ListScreenUIState())
+    ) : ViewModel() {
+
+    var uiState: ListScreenUIState by mutableStateOf(ListScreenUIState())
         private set
 
-    fun getAllCards(){
-       viewModelScope.launch(Dispatchers.IO) {
-          val response =  cardRepository.getCards()
-           if (response.length>5){
-               updateUiObject(uiState.copy(responseCards = response.take(100)))
-           }
-       }
-   }
-
-
-    fun updateUiObject(listScreenUIState: ListScreenUIState) {
-        this.uiState = listScreenUIState
+    init {
+        viewModelScope.launch {
+            val response = getClassicCardsUseCase.invoke()
+            uiState = ListScreenUIState(
+                loading = false,
+                yugiohCard =
+            )
+        }
     }
 
-//    init {
-//        getAllCards()
-//        println("HOLA")
-//    }
-
+    data class ListScreenUIState(
+        val loading: Boolean = false,
+        val yugiohCard: YugiohCard? = null,
+    )
 }
-
-data class ListScreenUIState (
-    val responseCards : String = "",
-
-)

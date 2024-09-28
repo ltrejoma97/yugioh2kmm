@@ -50,15 +50,17 @@ class MainViewModel(
         viewModelScope.launch {
             getClassicCardsUseCase.invoke().onStart {
                 println("Comenzando El Flow")
-            }.collect{
-                uiState= CardsUiState(
-                        cardsList = it) } ?: CardsUiState()
-            }
+            }.collect {
+                uiState = CardsUiState(
+                    cardsList = it
+                )
+            } ?: CardsUiState()
+        }
     }
 
     fun testPersistenceWrite() {
         viewModelScope.launch(Dispatchers.IO) {
-           getClassicCardsUseCase.invoke()
+            getClassicCardsUseCase.invoke()
         }
     }
 
@@ -72,30 +74,14 @@ class MainViewModel(
         viewModelScope.launch {
             getGetBlueEyesDragonCardsUseCase.testFlow().onStart {
                 println("iniciando el flow")
-            }.collect{
+            }.collect {
                 println(it)
             }
         }
     }
 
-
-//    private val allCards = repository.getCards()
-
     init {
         //getAllCards()
         getCards()
     }
-
-//    private fun getAllCards() {
-//        viewModelScope.launch {
-//            _uiState.update { state ->
-//                state.copy()
-//            }
-//        }
-//    }
-    private fun CardDto.toDomainCardList()= CardsList(
-        id = this.id,
-        name = this.name,
-        type = this.type)
-
 }
