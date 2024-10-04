@@ -1,10 +1,10 @@
 package org.example.yugiohkmmtest.model
 
-data class CardsModel(
-    val data: List<CardsList>
-)
+import kotlinx.serialization.Serializable
 
-data class CardsList(
+
+@Serializable
+data class CardsModel(
     val id: Int,
     val name: String,
     val type: String

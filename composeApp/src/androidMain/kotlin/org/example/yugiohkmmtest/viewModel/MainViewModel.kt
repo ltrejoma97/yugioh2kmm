@@ -4,23 +4,15 @@ package org.example.yugiohkmmtest.viewModel
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import moe.tlaster.precompose.viewmodel.ViewModel
 import moe.tlaster.precompose.viewmodel.viewModelScope
-import org.example.yugiohkmmtest.domain.CardRepository
-import org.example.yugiohkmmtest.domain.DTO.CardDto
 import org.example.yugiohkmmtest.domain.GetBlueEyesDragonCardsUseCase
 import org.example.yugiohkmmtest.domain.modelObjexts.YugiohCard
 import org.example.yugiohkmmtest.domain.useCases.GetClassicCardsUseCase
 import org.example.yugiohkmmtest.domain.useCases.RealmTestUseCase
-import org.example.yugiohkmmtest.domain.useCases.UseCaseResponse
-import org.example.yugiohkmmtest.model.CardsList
 
 data class CardsUiState(
     val cardsList: List<YugiohCard> = emptyList(),

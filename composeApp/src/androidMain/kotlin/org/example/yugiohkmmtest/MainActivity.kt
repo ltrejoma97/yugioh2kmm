@@ -25,15 +25,15 @@ class MainActivity : ComponentActivity() {
             val mainViewModel : MainViewModel= remember {
                 MainViewModel(get(), get(), get())
             }
-            val listScreenViewModel : ListScreenViewModel = remember {
-                ListScreenViewModel(get(), get(), get(), get())
-            }
+//            val listScreenViewModel : ListScreenViewModel = remember {
+//                ListScreenViewModel(get(), get(), get(), get())
+//            }
             LaunchedEffect(Unit){
                 mainViewModel.testPersistenceWrite()
                 mainViewModel.getCards()
             }
 
-            App(mainViewModel, listScreenViewModel)
+            App(mainViewModel)
             //MainScreen(viewModel.uiState.value)
         }
     }

@@ -13,7 +13,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.androidx.compose.get
 
 @Composable
-fun App(mainViewModel: MainViewModel, listScreenViewModel: ListScreenViewModel) {
+fun App(mainViewModel: MainViewModel) {
     MaterialTheme {
         PreComposeApp {
             //val viewModel = MainViewModel(get(), get(), get())
@@ -27,7 +27,7 @@ fun App(mainViewModel: MainViewModel, listScreenViewModel: ListScreenViewModel) 
             //val uiState by viewModel.uiState.collectAsStateWithLifecycle()
             //val uiState = viewModel.uiState
             //MainScreen(vm = mainViewModel)
-            Navigation(mainViewModel, listScreenViewModel)
+            Navigation(mainViewModel)
 
         }
     }

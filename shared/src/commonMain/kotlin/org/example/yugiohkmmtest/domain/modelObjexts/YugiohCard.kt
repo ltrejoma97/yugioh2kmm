@@ -1,11 +1,12 @@
 package org.example.yugiohkmmtest.domain.modelObjexts
 
+import kotlinx.serialization.Serializable
 import org.example.yugiohkmmtest.data.LocalDataSource.DatabaseCard
 import org.example.yugiohkmmtest.data.TypeOfCard
 
 
 
-
+@Serializable
 data class YugiohCard(
     val id :Int=0,
     val name : String="",

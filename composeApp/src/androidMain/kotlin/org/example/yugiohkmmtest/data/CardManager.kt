@@ -1,37 +1,37 @@
 package org.example.yugiohkmmtest.data
 
-import org.example.yugiohkmmtest.model.CardsList
+import org.example.yugiohkmmtest.model.CardsModel
 
 object CardManager {
 
     private var currentId = 1
 
     val fakeCards = mutableListOf(
-        CardsList(
+        CardsModel(
             id = currentId++,
             name = "name1",
             type = "type1",
 
         ),
-        CardsList(
+        CardsModel(
             id = currentId++,
             name = "name2",
             type = "type2",
 
         ),
-        CardsList(
+        CardsModel(
             id = currentId++,
             name = "name3",
             type = "type3",
 
         ),
-        CardsList(
+        CardsModel(
             id = currentId++,
             name = "name4",
             type = "type4",
 
         ),
-        CardsList(
+        CardsModel(
             id = currentId++,
             name = "name5",
             type = "type5",

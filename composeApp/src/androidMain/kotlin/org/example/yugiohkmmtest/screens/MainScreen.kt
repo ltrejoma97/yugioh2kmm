@@ -76,7 +76,7 @@ fun ContentScreen(
 
 ) {
     when (selectedIndex) {
-        0 -> ListCards(vm)
+        0 -> ListCards(vm, onCardClick)
         1 -> ShowingMap()
         2 -> Hello()
     }

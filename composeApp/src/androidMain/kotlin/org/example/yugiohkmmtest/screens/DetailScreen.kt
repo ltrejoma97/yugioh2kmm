@@ -26,9 +26,15 @@ import org.example.yugiohkmmtest.viewModel.ListScreenViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(vm: ListScreenViewModel, onBack: () -> Unit) {
+fun DetailScreen(
+    //vm: ListScreenViewModel,
+    onBack: () -> Unit,
+    cardId: Int,
+    cardName: String,
+    cardImages: String,
+) {
     //val movie = movies[10]
-    val state = vm.uiState
+    //val state = vm.uiState
     Surface(
         modifier = Modifier.fillMaxSize()
     ) {
@@ -48,27 +54,26 @@ fun DetailScreen(vm: ListScreenViewModel, onBack: () -> Unit) {
             }
         ) { padding ->
             //LoadingIndicator(enabled = state.loading)
-            state.yugiohCard?.let { movie ->
-                Column(
-                    modifier = Modifier.padding(padding)
-                        .verticalScroll(rememberScrollState())
-                ) {
-                    AsyncImage(
-                        model = movie.imgUrl,
-                        contentDescription = movie.name,
-                        contentScale = ContentScale.Crop,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .aspectRatio(3f / 4f)
-                    )
-                    Text(
-                        text = movie.name,
-                        modifier = Modifier.padding(16.dp),
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-                }
+            //state.yugiohCard?.let { movie ->
+            Column(
+                modifier = Modifier
+                    .padding(padding)
+                    .verticalScroll(rememberScrollState())
+            ) {
+                AsyncImage(
+                    model = cardImages,
+                    contentDescription = cardName,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .aspectRatio(3f / 4f)
+                )
+                Text(
+                    text = "Id: $cardId",
+                    modifier = Modifier.padding(16.dp),
+                    style = MaterialTheme.typography.headlineMedium
+                )
             }
         }
     }
-    }
-//}
+}

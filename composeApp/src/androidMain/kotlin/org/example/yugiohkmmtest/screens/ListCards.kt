@@ -33,7 +33,7 @@ import org.example.yugiohkmmtest.viewModel.MainViewModel
 @Composable
 fun ListCards(
     mainViewModel: MainViewModel,
-    //onCardClick: (YugiohCard) -> Unit
+    onCardClick: (YugiohCard) -> Unit
 
 ) {
     val state = mainViewModel.uiState
@@ -44,7 +44,10 @@ fun ListCards(
         verticalArrangement = Arrangement.spacedBy(4.dp)
     ){
         items(state.cardsList, key = { it.id }) { yugiCard ->
-            CardElemento(cardItem = yugiCard)
+            CardElemento(
+                cardItem = yugiCard,
+                onClick = { onCardClick(yugiCard) }
+            )
         }
     }
 }
@@ -53,12 +56,12 @@ fun ListCards(
 @Composable
 fun CardElemento(
     cardItem: YugiohCard,
-    //onClick: () -> Unit
+    onClick: () -> Unit
 ) {
     Card(
         modifier = Modifier
             .padding(8.dp)
-            .clickable { }, elevation = 8.dp
+            .clickable { onClick() }, elevation = 8.dp
     ) {
         Column(
             verticalArrangement = Arrangement.Center,

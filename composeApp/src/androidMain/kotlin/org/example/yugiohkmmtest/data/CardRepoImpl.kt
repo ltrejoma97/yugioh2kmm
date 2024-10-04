@@ -6,7 +6,6 @@ import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
 import kotlinx.serialization.json.Json
 import org.example.yugiohkmmtest.domain.CardRepository
-import org.example.yugiohkmmtest.model.CardsList
 
 private const val BASE_URL = "https://db.ygoprodeck.com/api/v7/cardinfo.php"
 class CardRepoImpl(
