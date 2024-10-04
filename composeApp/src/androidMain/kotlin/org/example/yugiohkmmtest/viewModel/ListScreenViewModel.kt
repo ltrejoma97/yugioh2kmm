@@ -25,13 +25,13 @@ class ListScreenViewModel(
         private set
 
     init {
-        viewModelScope.launch {
-            val response = getClassicCardsUseCase.invoke()
-            uiState = ListScreenUIState(
-                loading = false,
-                yugiohCard =
-            )
-        }
+//        viewModelScope.launch {
+//            val response = getClassicCardsUseCase.invoke()
+//            uiState = ListScreenUIState(
+//                loading = false,
+//                yugiohCard =
+//            )
+//        }
     }
 
     data class ListScreenUIState(

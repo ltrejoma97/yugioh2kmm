@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
                 MainViewModel(get(), get(), get())
             }
             val listScreenViewModel : ListScreenViewModel = remember {
-                ListScreenViewModel(get(), get(), get())
+                ListScreenViewModel(get(), get(), get(), get())
             }
             LaunchedEffect(Unit){
                 mainViewModel.testPersistenceWrite()
