@@ -10,6 +10,7 @@ import io.ktor.client.statement.HttpResponse
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonBuilder
 import kotlinx.serialization.json.JsonConfiguration
+import kotlinx.serialization.json.encodeToJsonElement
 import org.example.yugiohkmmtest.domain.DTO.CardDTOResponse
 
 
@@ -44,8 +45,8 @@ class EndpointImp(): Endpoint {
             val response :String = client.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=Blue-Eyes").body<String>()?:"Error avisale a luis"
             //INTERNAL CONSTRUCTOR
 
-
             val obj = json.decodeFromString<CardDTOResponse>(response)
+
             return obj
         }.getOrElse {
            throw it

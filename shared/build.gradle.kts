@@ -44,13 +44,29 @@ kotlin {
         }
         androidMain.dependencies {
             implementation(libs.ktor.client.cio)
+            implementation(libs.firebase.firestore.ktx) // Agregar Firestore para Android.
+
 
         }
 
             iosMain.dependencies {
                 implementation(libs.ktor.client.darwin)
+
+
+                implementation(libs.kotlinx.coroutines.core.v160nativemt)  // Para soporte de corutinas en iOS
+                    // Las dependencias de Firebase para iOS se manejarán a través de CocoaPods
+
             }
 
+    }
+    ios {
+        compilations.getByName("main") {
+            cinterops {
+                val firestore by creating {
+                    defFile("src/nativeInterop/cinterop/firestore.def")
+                }
+            }
+        }
     }
 }
 

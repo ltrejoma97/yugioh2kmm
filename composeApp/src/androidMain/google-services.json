@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1025909250652",
+    "project_id": "yugioh-kmm-test",
+    "storage_bucket": "yugioh-kmm-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1025909250652:android:81da0a9a0a18101f786499",
+        "android_client_info": {
+          "package_name": "org.example.yugiohkmmtest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCd2KYMPdn7cG403wpd2aIFL7vOrsYifTE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

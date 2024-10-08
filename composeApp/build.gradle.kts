@@ -9,6 +9,8 @@ plugins {
     alias(libs.plugins.compose.compiler)
     kotlin("plugin.serialization") version "1.7.10"
 
+
+
 }
 
 kotlin {
@@ -22,6 +24,8 @@ kotlin {
     sourceSets {
         
         androidMain.dependencies {
+            implementation (libs.firebase.bom)
+
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
 //            implementation(libs.google.maps)      // Google Maps
