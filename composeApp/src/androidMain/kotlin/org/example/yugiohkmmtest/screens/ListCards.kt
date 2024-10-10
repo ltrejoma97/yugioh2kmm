@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import org.example.yugiohkmmtest.R
 import org.example.yugiohkmmtest.domain.modelObjexts.YugiohCard
+import org.example.yugiohkmmtest.util.LoadingIndicator
 import org.example.yugiohkmmtest.viewModel.MainViewModel
 
 @Composable
@@ -37,6 +38,7 @@ fun ListCards(
 
 ) {
     val state = mainViewModel.uiState
+    LoadingIndicator(enabled = state.loading)
     LazyVerticalGrid(
         columns = GridCells.Adaptive(120.dp),
         contentPadding = PaddingValues(4.dp),

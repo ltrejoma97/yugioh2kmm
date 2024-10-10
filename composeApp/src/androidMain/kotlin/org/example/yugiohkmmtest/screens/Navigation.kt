@@ -14,36 +14,50 @@ import org.example.yugiohkmmtest.viewModel.MainViewModel
 fun Navigation(vm: MainViewModel) {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "home"  ){
-        composable("home"){
+    NavHost(navController = navController, startDestination = "home") {
+        composable("home") {
             MainScreen(
                 onCardClick = { yugiohCard ->
                     val json = Json { ignoreUnknownKeys = true }
                     val jsonEncode = json.encodeToJsonElement(yugiohCard).toString()
                     val encodedName = encodeUrlComponent(yugiohCard.name)
                     val encodedImageUrl = encodeUrlComponent(yugiohCard.imgUrl)
+                    val encodedAtk = encodeUrlComponent(yugiohCard.atk.toString())
+                    val encodedDef = encodeUrlComponent(yugiohCard.def.toString())
+                    val encodedLevel = encodeUrlComponent(yugiohCard.level.toString())
 
-                    navController.navigate("detail/${yugiohCard.id}/$encodedName/$encodedImageUrl")
+                    navController.navigate("detail/${yugiohCard.id}/$encodedName/$encodedImageUrl/$encodedAtk/$encodedDef/$encodedLevel")
                 },
-                vm = vm)
+                vm = vm
+            )
         }
 
         composable(
-            route = "detail/{movieId}/{cardName}/{cardImages}",
+            route = "detail/{movieId}/{cardName}/{cardImages}/{atk}/{def}/{level}",
             arguments = listOf(
                 navArgument("movieId") { type = NavType.IntType },
                 navArgument("cardName") { type = NavType.StringType },
                 navArgument("cardImages") { type = NavType.StringType },
+                navArgument("atk") { type = NavType.IntType},
+                navArgument("def") { type = NavType.IntType },
+                navArgument("level") { type = NavType.IntType },
             )
         ) { backstackEntry ->
             val movieId = checkNotNull(backstackEntry.arguments?.getInt("movieId"))
             val cardName = checkNotNull(backstackEntry.arguments?.getString("cardName"))
             val cardImages = checkNotNull(backstackEntry.arguments?.getString("cardImages"))
+            val atk = checkNotNull(backstackEntry.arguments?.getInt("atk"))
+            val def = checkNotNull(backstackEntry.arguments?.getInt("def"))
+            val level = checkNotNull(backstackEntry.arguments?.getInt("level"))
             DetailScreen(
                 cardId = movieId,
                 cardName = cardName,
                 cardImages = cardImages,
-                onBack = { navController.popBackStack() }
+                atk = atk,
+                def = def,
+                level = level,
+                onBack = { navController.popBackStack() },
+                vm = vm
             )
         }
     }

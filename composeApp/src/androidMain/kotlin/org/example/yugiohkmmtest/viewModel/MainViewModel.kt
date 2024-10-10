@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import moe.tlaster.precompose.viewmodel.ViewModel
@@ -16,6 +17,7 @@ import org.example.yugiohkmmtest.domain.useCases.RealmTestUseCase
 
 data class CardsUiState(
     val cardsList: List<YugiohCard> = emptyList(),
+    val loading: Boolean = false
 )
 
 class MainViewModel(
@@ -40,11 +42,14 @@ class MainViewModel(
 //        }
 
         viewModelScope.launch {
+            uiState = CardsUiState(loading = true)
+            delay(1000)
             getClassicCardsUseCase.invoke().onStart {
                 println("Comenzando El Flow")
             }.collect {
                 uiState = CardsUiState(
-                    cardsList = it
+                    cardsList = it,
+                    loading = false
                 )
             } ?: CardsUiState()
         }

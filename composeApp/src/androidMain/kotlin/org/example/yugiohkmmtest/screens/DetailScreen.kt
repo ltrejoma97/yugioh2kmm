@@ -22,26 +22,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
-import org.example.yugiohkmmtest.viewModel.ListScreenViewModel
+import org.example.yugiohkmmtest.util.LoadingIndicator
+import org.example.yugiohkmmtest.viewModel.MainViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(
-    //vm: ListScreenViewModel,
+    vm: MainViewModel,
     onBack: () -> Unit,
     cardId: Int,
     cardName: String,
     cardImages: String,
+    atk: Int,
+    def: Int,
+    level: Int,
 ) {
     //val movie = movies[10]
-    //val state = vm.uiState
+    val state = vm.uiState
     Surface(
         modifier = Modifier.fillMaxSize()
     ) {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text("") },
+                    title = { Text(cardName) },
                     navigationIcon = {
                         IconButton(onClick = onBack) {
                             Icon(
@@ -53,7 +57,7 @@ fun DetailScreen(
                 )
             }
         ) { padding ->
-            //LoadingIndicator(enabled = state.loading)
+            LoadingIndicator(enabled = state.loading)
             //state.yugiohCard?.let { movie ->
             Column(
                 modifier = Modifier
@@ -70,6 +74,21 @@ fun DetailScreen(
                 )
                 Text(
                     text = "Id: $cardId",
+                    modifier = Modifier.padding(16.dp),
+                    style = MaterialTheme.typography.headlineMedium
+                )
+                Text(
+                    text = "ATK: $atk",
+                    modifier = Modifier.padding(16.dp),
+                    style = MaterialTheme.typography.headlineMedium
+                )
+                Text(
+                    text = "DEF: $def",
+                    modifier = Modifier.padding(16.dp),
+                    style = MaterialTheme.typography.headlineMedium
+                )
+                Text(
+                    text = "Level: $level",
                     modifier = Modifier.padding(16.dp),
                     style = MaterialTheme.typography.headlineMedium
                 )
